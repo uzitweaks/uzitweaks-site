@@ -1257,6 +1257,49 @@
   width: 100%;
 }
 
+.pricing-email-wrap {
+  width: 100%;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.pricing-email-input {
+  width: 100%;
+  padding: 14px 20px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  box-sizing: border-box;
+}
+
+.pricing-email-input::placeholder {
+  color: var(--text-dim);
+  opacity: 0.6;
+}
+
+.pricing-email-input:focus {
+  border-color: var(--cyan);
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.2);
+}
+
+.pricing-email-input.error {
+  border-color: #ff4466;
+  box-shadow: 0 0 12px rgba(255, 68, 102, 0.2);
+}
+
+.pricing-email-error {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.75rem;
+  color: #ff4466;
+  text-align: left;
+}
+
 .pricing-secure {
   margin-top: 16px;
   font-size: 0.8rem;
@@ -1358,6 +1401,93 @@
   color: var(--text-dim);
   font-size: 0.95rem;
   line-height: 1.7;
+}
+
+/* ============================================
+   UNDER THE HOOD
+   ============================================ */
+.under-hood {
+  padding: 100px 0;
+  background: var(--bg-primary);
+  position: relative;
+}
+
+.hood-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 48px;
+}
+
+.hood-item {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.hood-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cyan), var(--purple));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.hood-item:hover {
+  border-color: var(--cyan);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+}
+
+.hood-item:hover::before {
+  opacity: 1;
+}
+
+.hood-label {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--cyan);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.hood-code {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.8rem;
+  color: var(--green);
+  background: rgba(0, 255, 136, 0.05);
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 255, 136, 0.1);
+  margin-bottom: 10px;
+  word-break: break-all;
+}
+
+.hood-desc {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+@media (max-width: 1024px) {
+  .hood-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .hood-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ============================================
