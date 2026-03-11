@@ -55,7 +55,7 @@ const features = [
     title: 'Tools',
     icon: '[ ]',
     color: 'purple' as const,
-    desc: 'FPS overlay, GPU overclock profiles, RAM cleaner, DPC latency tester, input lag analyzer, and monitor response optimizer.',
+    desc: 'FPS overlay, GPU overclock profiles, RAM cleaner, DPC latency tester, input lag analyzer, monitor response optimizer, game booster mode, and Windows repair tools.',
   },
   {
     step: '08',
@@ -71,12 +71,33 @@ const features = [
     color: 'green' as const,
     desc: 'Auto-detects installed games and applies per-game optimizations: GPU preference, CPU priority, Defender exclusions, and fullscreen behavior.',
   },
+  {
+    step: '10',
+    title: 'Virus Scan',
+    icon: 'SCN',
+    color: 'orange' as const,
+    desc: '5-layer threat detector: autorun persistence, live process analysis, crypto miner detection, system tamper checks, and VirusTotal hash lookups. Quarantine and force-remove any threat.',
+  },
+  {
+    step: '11',
+    title: 'Game Booster',
+    icon: 'BST',
+    color: 'cyan' as const,
+    desc: 'One-click game boost mode. Kills bloatware processes, purges RAM, sets 0.5ms timer resolution, enables focus assist, and sets your game to high priority.',
+  },
+  {
+    step: '12',
+    title: 'Windows Repair',
+    icon: 'FIX',
+    color: 'purple' as const,
+    desc: 'SFC scan, DISM repair, Windows Update reset, DLL re-registration, Store repair, and network stack reset. Fix corrupted files and broken updates in one click.',
+  },
 ]
 
 const faqs = [
   {
     q: 'Is UziTweaks safe to use?',
-    a: 'Yes. A system restore point is created before any changes. Full restore scripts (.bat + .ps1) are generated automatically. Every registry change, service modification, and boot setting is logged and reversible.',
+    a: 'Yes. A system restore point is created before any changes. Full restore scripts (.bat + .ps1) are generated automatically. Every registry change, service modification, and boot setting is logged and reversible. UziTweaks also includes a built-in 5-layer threat scanner to detect and remove malware.',
   },
   {
     q: 'Will this get me banned in competitive games?',
@@ -88,7 +109,7 @@ const faqs = [
   },
   {
     q: 'Is this just a script wrapper for free registry tweaks?',
-    a: 'No. It\'s a full .NET 9 WPF application with hardware detection, per-game optimization across 5 launcher platforms, DPC latency testing, interrupt affinity setup, restore script generation, and FACEIT AC diagnostics. A lot more than what a batch script can do.',
+    a: 'No. It\'s a full .NET 9 WPF application with hardware detection, per-game optimization across 5 launcher platforms, DPC latency testing, interrupt affinity setup, restore script generation, FACEIT AC diagnostics, a 5-layer threat scanner, game booster mode, and Windows repair tools. A lot more than what a batch script can do.',
   },
   {
     q: 'Does it detect my specific hardware?',
@@ -148,6 +169,9 @@ const comparisonData = [
   { feature: 'USB / Input Device Tweaks', uzi: true, manual: false, other: false },
   { feature: 'Auto Restore System', uzi: true, manual: false, other: 'Partial' },
   { feature: 'FACEIT AC Diagnostics', uzi: true, manual: false, other: false },
+  { feature: 'Built-in Threat Scanner', uzi: true, manual: false, other: false },
+  { feature: 'Game Booster Mode', uzi: true, manual: false, other: 'Basic' },
+  { feature: 'Windows Repair Tools', uzi: true, manual: false, other: false },
   { feature: 'Time to Optimize', uzi: '< 5 min', manual: '3-5 hours', other: '15-30 min' },
   { feature: 'Price', uzi: 'One-time $29.99', manual: 'Free (your time)', other: '$15-80/yr' },
 ]
@@ -523,7 +547,7 @@ function HomePage() {
       <section className="features" id="features" ref={featuresRef.ref}>
         <div className={`container fade-in-section ${featuresRef.inView ? 'visible' : ''}`}>
           <h2 className="section-title">
-            <span className="gradient-text">9-Step</span> Optimization Pipeline
+            <span className="gradient-text">12-Step</span> Optimization Pipeline
           </h2>
           <p className="section-subtitle">
             A complete workflow that takes your system from stock to fully optimized.
@@ -551,7 +575,7 @@ function HomePage() {
             <span className="gradient-text-fire">Packed With</span> Power Tools
           </h2>
           <p className="section-subtitle">
-            Beyond the 9-step pipeline, UziTweaks includes real-time performance tools and diagnostics.
+            Beyond the 12-step pipeline, UziTweaks includes real-time performance tools and diagnostics.
           </p>
           <div className="extras-grid">
             <div className="extra-item">
@@ -583,6 +607,21 @@ function HomePage() {
               <div className="extra-icon-wrap pink">{'AC/'}</div>
               <h4>FACEIT AC Diagnostics</h4>
               <p>8-point check: Secure Boot, TPM, VBS, unsigned drivers, service status, test signing, conflicting software, and Windows version.</p>
+            </div>
+            <div className="extra-item">
+              <div className="extra-icon-wrap orange">{'SCN'}</div>
+              <h4>5-Layer Threat Scanner</h4>
+              <p>Scans autorun persistence, live processes, crypto miners, system tampering, and VirusTotal hashes. Quarantine or force-remove any threat found.</p>
+            </div>
+            <div className="extra-item">
+              <div className="extra-icon-wrap green">{'BST'}</div>
+              <h4>Game Booster</h4>
+              <p>Kill bloatware, purge RAM, set 0.5ms timer, enable focus assist, and boost your game to high priority — all in one click before you queue.</p>
+            </div>
+            <div className="extra-item">
+              <div className="extra-icon-wrap cyan">{'FIX'}</div>
+              <h4>Windows Repair</h4>
+              <p>SFC scan, DISM image repair, Windows Update reset, DLL re-registration, Store repair, and network stack reset. Fix system corruption fast.</p>
             </div>
           </div>
         </div>
@@ -826,7 +865,7 @@ function HomePage() {
               <div className="step-number">3</div>
               <div className="step-icon-wrap">{'!!!'}</div>
               <h3>Dominate</h3>
-              <p>Run the 9-step pipeline. Your system is now fully optimized. Go win.</p>
+              <p>Run the 12-step pipeline. Your system is now fully optimized. Go win.</p>
             </div>
           </div>
         </div>
