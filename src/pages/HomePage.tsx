@@ -412,9 +412,9 @@ function HomePage() {
           </p>
           <div className="screenshots-showcase">
             {[
-              { src: '/screenshots/optimize.png', label: 'System Optimizer', angle: 'left' },
-              { src: '/screenshots/network.png', label: 'Network Boost', angle: 'center' },
-              { src: '/screenshots/benchmark.png', label: 'Benchmark', angle: 'right' },
+              { src: `${import.meta.env.BASE_URL}screenshots/optimize.png`, label: 'System Optimizer', angle: 'left' },
+              { src: `${import.meta.env.BASE_URL}screenshots/network.png`, label: 'Network Boost', angle: 'center' },
+              { src: `${import.meta.env.BASE_URL}screenshots/benchmark.png`, label: 'Benchmark', angle: 'right' },
             ].map((s, i) => (
               <div key={i} className={`screenshot-3d screenshot-3d-${s.angle}`}>
                 <div className="screenshot-3d-inner">
@@ -427,9 +427,9 @@ function HomePage() {
           </div>
           <div className="screenshots-showcase screenshots-showcase-row2">
             {[
-              { src: '/screenshots/gamecfg.png', label: 'Game Config', angle: 'left' },
-              { src: '/screenshots/faceit.png', label: 'FACEIT Anti-Cheat', angle: 'center' },
-              { src: '/screenshots/bios.png', label: 'BIOS Guide', angle: 'right' },
+              { src: `${import.meta.env.BASE_URL}screenshots/gamecfg.png`, label: 'Game Config', angle: 'left' },
+              { src: `${import.meta.env.BASE_URL}screenshots/faceit.png`, label: 'FACEIT Anti-Cheat', angle: 'center' },
+              { src: `${import.meta.env.BASE_URL}screenshots/bios.png`, label: 'BIOS Guide', angle: 'right' },
             ].map((s, i) => (
               <div key={i} className={`screenshot-3d screenshot-3d-${s.angle}`}>
                 <div className="screenshot-3d-inner">
