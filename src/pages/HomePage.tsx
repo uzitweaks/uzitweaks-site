@@ -76,27 +76,39 @@ const features = [
 const faqs = [
   {
     q: 'Is UziTweaks safe to use?',
-    a: 'Absolutely. UziTweaks creates a full restore script before making any changes. Every tweak can be reversed with one click. No permanent modifications are made without your consent.',
+    a: 'Yes. A system restore point is created before any changes. Full restore scripts (.bat + .ps1) are generated automatically. Every registry mutation, service state change, and BCD modification is logged and reversible. Nothing is permanent.',
   },
   {
     q: 'Will this get me banned in competitive games?',
-    a: 'No. UziTweaks only modifies Windows system settings, registry values, and network configurations. It does not inject into or modify any game files. It is fully compatible with anti-cheat software including FACEIT AC, Vanguard, and EAC.',
+    a: 'No. UziTweaks only modifies Windows registry values, system services, power plans, and network stack parameters. It does not inject into, hook, or modify any game process or file. Fully compatible with FACEIT AC, Vanguard, EAC, and BattlEye.',
   },
   {
-    q: 'What games does it support?',
-    a: 'UziTweaks optimizes your entire Windows system, so every game benefits. It also has dedicated config profiles for Fortnite, Valorant, CS2, Apex Legends, Rocket League, and Rainbow Six Siege, with more being added regularly.',
+    q: 'What exactly does it change? Can I see the tweaks?',
+    a: 'Every tweak is visible in the app with a checkbox. You choose what runs. The app shows real-time output of every registry key written, service disabled, and setting changed. Nothing runs hidden. The "Under the Hood" section on this page shows examples of actual modifications.',
+  },
+  {
+    q: 'Is this just a script wrapper for free registry tweaks?',
+    a: 'No. UziTweaks is a 15,000+ line .NET 9 WPF application. It includes hardware detection (CPU/GPU/NIC auto-identification), per-exe game optimization across 5 launcher platforms, DPC latency testing, interrupt affinity calculation based on your actual core count, auto-restore script generation, and a FACEIT AC diagnostic suite. These aren\'t things you find in a .bat file.',
+  },
+  {
+    q: 'Does it detect my specific hardware?',
+    a: 'Yes. UziTweaks detects your CPU model, GPU vendor (NVIDIA/AMD/Intel), network adapter, core count, L2 cache size, RAM capacity, and storage type. Tweaks are applied conditionally based on your actual hardware -- not one-size-fits-all.',
   },
   {
     q: 'How does the license work?',
-    a: 'You get a lifetime license key tied to your purchase. Enter it in the app to unlock all features. One license per machine. No subscriptions, no recurring charges.',
+    a: 'One-time purchase, lifetime license. Key is tied to your hardware ID (HWID). One license per machine. No subscriptions, no recurring charges. Free updates forever.',
   },
   {
     q: 'What Windows versions are supported?',
-    a: 'UziTweaks is built for Windows 10 (21H2+) and Windows 11. It requires a 64-bit system with .NET 9 runtime (bundled with the app).',
+    a: 'Windows 10 (21H2+) and Windows 11. 64-bit only. .NET 9 runtime is bundled with the app (no extra installs needed). Self-contained single-file binary.',
   },
   {
-    q: 'Can I undo the changes?',
-    a: 'Yes. UziTweaks automatically generates restore scripts (both .bat and .ps1) on your Desktop before applying any tweaks. There is also a dedicated Restore page inside the app to revert everything.',
+    q: 'Can I undo all changes?',
+    a: 'Yes. Before applying any tweaks, UziTweaks creates a system restore point AND generates restore scripts (both .bat and .ps1) on your Desktop. There is also a dedicated Restore page inside the app. Every change is fully reversible.',
+  },
+  {
+    q: 'Will this actually improve my FPS?',
+    a: 'On a bloated Windows install with many background services and default settings, yes. Typical gains are 10-20% FPS increase and significant reduction in frame time spikes. Clean Windows installs will see smaller gains. The built-in Optimization Score benchmark shows exactly what was improved and by how much.',
   },
 ]
 
@@ -419,7 +431,7 @@ function HomePage() {
             <span className="gradient-text-fire">Packed With</span> Power Tools
           </h2>
           <p className="section-subtitle">
-            Beyond the 9-step pipeline, UziTweaks includes a full suite of real-time performance tools.
+            Beyond the 9-step pipeline. 15,000+ lines of .NET 9 systems engineering. Not a script wrapper.
           </p>
           <div className="extras-grid">
             <div className="extra-item">
