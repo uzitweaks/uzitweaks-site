@@ -529,7 +529,7 @@ function HomePage() {
             </div>
           </div>
           <p className="tweak-list-note">
-            Every tweak has a checkbox. You choose what runs. Real-time output shows every change as it happens.
+            This is a fraction of what runs. The full pipeline applies over 1500 modifications across registry, services, power plans, BCD, network stack, and driver configs — all hardware-aware and fully reversible. Every tweak has a checkbox. You choose what runs.
           </p>
         </div>
       </section>
