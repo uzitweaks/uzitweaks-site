@@ -13,70 +13,70 @@ const features = [
     title: 'Drivers',
     icon: '//GR',
     color: 'cyan' as const,
-    desc: 'Auto-detect GPU/NIC/Audio chipsets and deploy latest signed drivers via multi-fallback pipeline (winget -> direct download -> Windows Update COM API).',
+    desc: 'Auto-detect and install the latest GPU, Network, Audio & Chipset drivers. Multiple fallback methods if one fails.',
   },
   {
     step: '02',
     title: 'Optimize',
     icon: '>>',
     color: 'purple' as const,
-    desc: '150+ kernel-level tweaks: MMCSS thread scheduling, DPC/ISR latency reduction, CPU idle state control, timer resolution override, GPU preemption disable, Win32PrioritySeparation tuning.',
+    desc: '150+ system tweaks including thread scheduling, DPC latency reduction, timer resolution, GPU scheduling priority, power plan tuning, and memory management.',
   },
   {
     step: '03',
     title: 'Debloat',
     icon: 'X_X',
     color: 'pink' as const,
-    desc: 'Nuclear service killer: 50+ background services disabled, telemetry pipelines severed, UWP bloat stripped, DiagTrack/dmwappush/SysMain terminated.',
+    desc: 'Disable 50+ unnecessary services, kill telemetry, remove bloatware apps, stop background data collection. Free up CPU and RAM for your games.',
   },
   {
     step: '04',
     title: 'Net Boost',
     icon: '<~>',
     color: 'green' as const,
-    desc: 'Nagle algorithm disable, TCP/UDP stack tuning, AFD buffer optimization, RSS/interrupt moderation control, NetworkThrottlingIndex bypass, DNS latency benchmark.',
+    desc: 'Disable Nagle algorithm, tune TCP/UDP buffers, remove network throttling, optimize interrupt moderation, benchmark DNS providers for lowest ping.',
   },
   {
     step: '05',
     title: 'Startup',
     icon: '>>>',
     color: 'orange' as const,
-    desc: 'Boot pipeline optimizer: disable non-critical scheduled tasks, strip startup entries, configure BCD for TSC sync + dynamic tick disable + minimal boot overhead.',
+    desc: 'Strip unnecessary startup programs and scheduled tasks. Configure boot settings for faster startup and consistent timer behavior.',
   },
   {
     step: '06',
     title: 'Cleaner',
     icon: 'CLR',
     color: 'cyan' as const,
-    desc: 'Deep filesystem sweep: shader caches, NTFS metadata, WinSxS, Windows Update residuals, browser data, temp allocations. Reclaim gigabytes of dead storage.',
+    desc: 'Clean shader caches, temp files, Windows Update leftovers, browser data, and system junk. Reclaim gigabytes of wasted disk space.',
   },
   {
     step: '07',
     title: 'Tools',
     icon: '[ ]',
     color: 'purple' as const,
-    desc: 'FPS overlay, GPU overclock profiles, standby RAM purge, DPC latency analyzer, input lag tester, monitor response optimizer, HPET/TSC diagnostics.',
+    desc: 'FPS overlay, GPU overclock profiles, RAM cleaner, DPC latency tester, input lag analyzer, and monitor response optimizer.',
   },
   {
     step: '08',
     title: 'Game Config',
     icon: 'CFG',
     color: 'pink' as const,
-    desc: 'Pre-built competitive configs: CS2 autoexec + launch options, Fortnite engine.ini, Valorant GameUserSettings, Apex videoconfig, R6 GameSettings.ini.',
+    desc: 'One-click competitive configs for CS2, Fortnite, Valorant, Apex, Rocket League, and R6 Siege. Autoexec, launch options, and engine settings.',
   },
   {
     step: '09',
     title: 'Profiles',
     icon: '///',
     color: 'green' as const,
-    desc: 'Per-exe optimization engine: FSO disable via registry, GPU preference override, IFEO CPU priority injection, Defender exclusion paths, process affinity masks.',
+    desc: 'Auto-detects installed games and applies per-game optimizations: GPU preference, CPU priority, Defender exclusions, and fullscreen behavior.',
   },
 ]
 
 const faqs = [
   {
     q: 'Is UziTweaks safe to use?',
-    a: 'Yes. A system restore point is created before any changes. Full restore scripts (.bat + .ps1) are generated automatically. Every registry mutation, service state change, and BCD modification is logged and reversible. Nothing is permanent.',
+    a: 'Yes. A system restore point is created before any changes. Full restore scripts (.bat + .ps1) are generated automatically. Every registry change, service modification, and boot setting is logged and reversible.',
   },
   {
     q: 'Will this get me banned in competitive games?',
@@ -88,11 +88,11 @@ const faqs = [
   },
   {
     q: 'Is this just a script wrapper for free registry tweaks?',
-    a: 'No. UziTweaks is a 15,000+ line .NET 9 WPF application. It includes hardware detection (CPU/GPU/NIC auto-identification), per-exe game optimization across 5 launcher platforms, DPC latency testing, interrupt affinity calculation based on your actual core count, auto-restore script generation, and a FACEIT AC diagnostic suite. These aren\'t things you find in a .bat file.',
+    a: 'No. It\'s a full .NET 9 WPF application with hardware detection, per-game optimization across 5 launcher platforms, DPC latency testing, interrupt affinity setup, restore script generation, and FACEIT AC diagnostics. A lot more than what a batch script can do.',
   },
   {
     q: 'Does it detect my specific hardware?',
-    a: 'Yes. UziTweaks detects your CPU model, GPU vendor (NVIDIA/AMD/Intel), network adapter, core count, L2 cache size, RAM capacity, and storage type. Tweaks are applied conditionally based on your actual hardware -- not one-size-fits-all.',
+    a: 'Yes. It detects your CPU, GPU vendor, network adapter, core count, and RAM. Tweaks are applied based on your actual hardware, not one-size-fits-all.',
   },
   {
     q: 'How does the license work?',
@@ -114,41 +114,41 @@ const faqs = [
 
 const whyUziTweaks = [
   {
-    title: 'Kernel-Level Engineering',
-    text: 'MSI mode for PCI interrupt routing, CPU affinity masks pinned to physical cores, MMCSS thread quantum tuning, NtSetTimerResolution override to 0.5ms, Spectre/Meltdown mitigation bypass, DPC watchdog disable -- tweaks that require systems programming knowledge to even find.',
+    title: 'More Than Registry Tweaks',
+    text: 'MSI mode for PCI devices, CPU interrupt affinity, MMCSS thread priority, timer resolution control, GPU preemption settings -- things that actually require understanding how Windows schedules work under the hood.',
     icon: '>>>',
   },
   {
-    title: 'Atomic Restore System',
-    text: 'Every registry mutation, service state change, and BCD modification is logged. Full restore scripts (.bat + .ps1) generated pre-execution. Deterministic rollback -- not "undo" but exact state restoration.',
+    title: 'Fully Reversible',
+    text: 'Every change is logged. Restore scripts (.bat + .ps1) are generated before anything runs. System restore point created automatically. If something feels off, one click undoes everything.',
     icon: '<->',
   },
   {
-    title: 'Per-Process Optimization Engine',
-    text: 'Auto-enumerates game executables across Steam, Epic, EA, Ubisoft, Battle.net libraries. Injects IFEO priority class, GPU preference registry overrides, Defender real-time exclusion paths, and FSO behavior flags per-binary.',
+    title: 'Per-Game Detection',
+    text: 'Scans Steam, Epic, EA, Ubisoft, and Battle.net for all installed games. Applies GPU preference, CPU priority, Defender exclusions, and fullscreen optimizations for each game individually.',
     icon: 'OPT',
   },
   {
-    title: 'Low-Latency Pipeline',
-    text: 'NVIDIA D3PCLatency pre-render queue reduction, USB HID polling optimization, raw mouse input 1:1 curve enforcement, HPET disable + TSC sync, interrupt affinity isolation -- sub-millisecond input latency engineering.',
+    title: 'Input Latency Focus',
+    text: 'NVIDIA pre-rendered frame reduction, USB device power management disable, raw mouse input enforcement, HPET disable, timer resolution set to 0.5ms. Built for competitive players who care about every millisecond.',
     icon: '///',
   },
 ]
 
 const comparisonData = [
-  { feature: 'Kernel-Level Registry Tweaks', uzi: '150+', manual: '10-20 (if you find them)', other: '30-50' },
-  { feature: 'DPC/ISR Latency Optimization', uzi: true, manual: false, other: false },
-  { feature: 'CPU Idle State + C-State Control', uzi: true, manual: false, other: false },
-  { feature: 'NVIDIA D3PCLatency + Deep Registry', uzi: true, manual: false, other: false },
-  { feature: 'Timer Resolution Override', uzi: '0.5ms', manual: 'Requires ISLC', other: false },
-  { feature: 'Interrupt Affinity Isolation', uzi: true, manual: false, other: false },
-  { feature: 'Raw Mouse Input Enforcement', uzi: true, manual: 'Partial', other: false },
-  { feature: 'Per-Exe IFEO + GPU Preference', uzi: 'Automatic', manual: false, other: false },
-  { feature: 'Network Stack Tuning (AFD/Winsock)', uzi: true, manual: false, other: 'Basic' },
-  { feature: 'USB HID Polling Optimization', uzi: true, manual: false, other: false },
-  { feature: 'Atomic Restore System', uzi: true, manual: false, other: 'Partial' },
-  { feature: 'FACEIT AC 8-Point Diagnostics', uzi: true, manual: false, other: false },
-  { feature: 'Time to Full Optimization', uzi: '< 5 min', manual: '3-5 hours', other: '15-30 min' },
+  { feature: 'Registry + System Tweaks', uzi: '150+', manual: '10-20', other: '30-50' },
+  { feature: 'DPC Latency Optimization', uzi: true, manual: false, other: false },
+  { feature: 'CPU Power State Control', uzi: true, manual: false, other: false },
+  { feature: 'NVIDIA Deep GPU Tweaks', uzi: true, manual: false, other: false },
+  { feature: 'Timer Resolution (0.5ms)', uzi: true, manual: 'Needs ISLC', other: false },
+  { feature: 'Interrupt Affinity Setup', uzi: true, manual: false, other: false },
+  { feature: 'Raw Mouse Input Fix', uzi: true, manual: 'Partial', other: false },
+  { feature: 'Per-Game Auto-Optimization', uzi: true, manual: false, other: false },
+  { feature: 'Network Stack Tuning', uzi: true, manual: false, other: 'Basic' },
+  { feature: 'USB / Input Device Tweaks', uzi: true, manual: false, other: false },
+  { feature: 'Auto Restore System', uzi: true, manual: false, other: 'Partial' },
+  { feature: 'FACEIT AC Diagnostics', uzi: true, manual: false, other: false },
+  { feature: 'Time to Optimize', uzi: '< 5 min', manual: '3-5 hours', other: '15-30 min' },
   { feature: 'Price', uzi: 'One-time $29.99', manual: 'Free (your time)', other: '$15-80/yr' },
 ]
 
@@ -317,10 +317,10 @@ function HomePage() {
             <span className="hero-title-line hero-title-accent">TWEAKS</span>
           </h1>
           <p className="hero-subtitle">
-            Kernel-level Windows optimizer. 150+ registry mutations, DPC/ISR latency reduction,
-            CPU idle state control, raw mouse input enforcement, GPU preemption disable, timer resolution override.
+            Windows gaming optimizer with 150+ system tweaks. DPC latency reduction,
+            timer resolution control, GPU scheduling, network stack tuning, and per-game optimization.
             <br />
-            <strong>One binary. Maximum framerate. Sub-millisecond input latency.</strong>
+            <strong>One app. Better FPS. Lower input lag.</strong>
           </p>
           <div className="hero-cta-row">
             <GlowButton size="lg" onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}>
@@ -337,7 +337,7 @@ function HomePage() {
           <div className="hero-stats">
             <div className="hero-stat">
               <span className="hero-stat-num">150+</span>
-              <span className="hero-stat-label">Kernel Tweaks</span>
+              <span className="hero-stat-label">System Tweaks</span>
             </div>
             <div className="hero-stat-divider" />
             <div className="hero-stat">
@@ -361,7 +361,7 @@ function HomePage() {
         <div className={`container fade-in-section ${trustRef.inView ? 'visible' : ''}`}>
           <div className="trust-counter">
             <div className="trust-counter-number">{tweakCount}+</div>
-            <div className="trust-counter-label">Kernel-Level Optimizations</div>
+            <div className="trust-counter-label">System Optimizations</div>
           </div>
           <div className="trust-badges">
             <div className="trust-badge">
@@ -431,38 +431,38 @@ function HomePage() {
             <span className="gradient-text-fire">Packed With</span> Power Tools
           </h2>
           <p className="section-subtitle">
-            Beyond the 9-step pipeline. 15,000+ lines of .NET 9 systems engineering. Not a script wrapper.
+            Beyond the 9-step pipeline, UziTweaks includes real-time performance tools and diagnostics.
           </p>
           <div className="extras-grid">
             <div className="extra-item">
               <div className="extra-icon-wrap pink">{'#01'}</div>
               <h4>Dual Benchmark</h4>
-              <p>Optimization Score scans 20+ system vectors (power plan, timer res, MMCSS, DPC state). Hardware Score runs raw CPU compute, sequential disk, RAM bandwidth, and ICMP latency benchmarks.</p>
+              <p>Optimization Score (0-100) checks your Windows settings against best practices. Hardware Score benchmarks CPU, disk, RAM, and network performance.</p>
             </div>
             <div className="extra-item">
               <div className="extra-icon-wrap cyan">{'FPS'}</div>
               <h4>FPS Overlay</h4>
-              <p>Lightweight WPF overlay with WS_EX_TRANSPARENT flag. Zero GPU overhead, always-on-top, real-time frame timing with 1% low tracking.</p>
+              <p>Lightweight always-on-top FPS counter. Works with any game, near-zero performance impact.</p>
             </div>
             <div className="extra-item">
               <div className="extra-icon-wrap green">{'OPT'}</div>
               <h4>Game Optimizer</h4>
-              <p>Enumerates executables across Steam libraryfolders.vdf, Epic manifests, EA/Ubisoft registries. Applies IFEO priority, GPU preference, FSO disable, Defender exclusions per-binary.</p>
+              <p>Scans Steam, Epic, EA, Ubisoft, and Battle.net for installed games. Applies GPU preference, CPU priority, Defender exclusions, and fullscreen settings per game.</p>
             </div>
             <div className="extra-item">
               <div className="extra-icon-wrap purple">{'CPU'}</div>
-              <h4>Process Priority Engine</h4>
-              <p>Background watchdog detects game process launch via WMI event subscription. Auto-sets CpuPriorityClass, IoPagePriority, affinity mask, and memory priority in real-time.</p>
+              <h4>Auto Process Priority</h4>
+              <p>Detects game launches automatically and sets CPU priority, affinity, and I/O priority in real-time. No manual task manager work needed.</p>
             </div>
             <div className="extra-item">
               <div className="extra-icon-wrap orange">{'GPU'}</div>
               <h4>GPU Overclock Profiles</h4>
-              <p>NVIDIA overclock via nvidia-smi: core clock offset, memory clock offset, power limit override, fan curve control. Tested presets for safe daily use.</p>
+              <p>NVIDIA GPU overclock presets: core clock, memory clock, power limit, and fan curve. Tested for safe daily use.</p>
             </div>
             <div className="extra-item">
               <div className="extra-icon-wrap pink">{'AC/'}</div>
               <h4>FACEIT AC Diagnostics</h4>
-              <p>8-point diagnostic: Secure Boot, TPM 2.0, VBS/HVCI state, unsigned driver scan, service status, test signing mode, conflicting software detection, Windows build verification.</p>
+              <p>8-point check: Secure Boot, TPM, VBS, unsigned drivers, service status, test signing, conflicting software, and Windows version.</p>
             </div>
           </div>
         </div>
@@ -475,48 +475,48 @@ function HomePage() {
             <span className="gradient-text-fire">Under</span> The Hood
           </h2>
           <p className="section-subtitle">
-            Not a GUI wrapper around regedit. Real systems engineering.
+            A look at some of the actual registry keys and system calls UziTweaks modifies.
           </p>
           <div className="hood-grid">
             <div className="hood-item">
-              <div className="hood-label">KERNEL</div>
+              <div className="hood-label">TIMER</div>
               <div className="hood-code">NtSetTimerResolution(5000, TRUE)</div>
-              <div className="hood-desc">Override Windows timer to 0.5ms via ntdll.dll direct syscall</div>
+              <div className="hood-desc">Set Windows timer to 0.5ms for smoother frame pacing</div>
             </div>
             <div className="hood-item">
               <div className="hood-label">GPU</div>
               <div className="hood-code">D3PCLatency = 0x1</div>
-              <div className="hood-desc">NVIDIA pre-rendered frame queue reduced to single frame</div>
+              <div className="hood-desc">Reduce NVIDIA pre-rendered frame queue to 1 (lower input lag)</div>
             </div>
             <div className="hood-item">
               <div className="hood-label">CPU</div>
               <div className="hood-code">Win32PrioritySeparation = 0x26</div>
-              <div className="hood-desc">Short quantum, variable, foreground boost for game threads</div>
+              <div className="hood-desc">Prioritize foreground processes (your game) over background tasks</div>
             </div>
             <div className="hood-item">
               <div className="hood-label">IRQ</div>
               <div className="hood-code">AssignmentSetOverride = 0x04</div>
-              <div className="hood-desc">GPU interrupts pinned to dedicated core, zero contention</div>
+              <div className="hood-desc">Pin GPU interrupts to a dedicated CPU core to avoid contention</div>
             </div>
             <div className="hood-item">
               <div className="hood-label">NET</div>
               <div className="hood-code">NetworkThrottlingIndex = 0xFFFFFFFF</div>
-              <div className="hood-desc">Multimedia network throttling completely bypassed</div>
+              <div className="hood-desc">Disable Windows multimedia network throttling entirely</div>
             </div>
             <div className="hood-item">
               <div className="hood-label">DPC</div>
               <div className="hood-code">DpcWatchdogPeriod = 0x0</div>
-              <div className="hood-desc">Kernel DPC watchdog disabled, no forced DPC timeouts</div>
+              <div className="hood-desc">Disable DPC watchdog to prevent forced timeout interruptions</div>
             </div>
             <div className="hood-item">
               <div className="hood-label">MEM</div>
               <div className="hood-code">DisablePagingExecutive = 0x1</div>
-              <div className="hood-desc">Kernel and drivers locked in RAM, never paged to disk</div>
+              <div className="hood-desc">Keep drivers and kernel in RAM instead of paging to disk</div>
             </div>
             <div className="hood-item">
-              <div className="hood-label">HID</div>
+              <div className="hood-label">MOUSE</div>
               <div className="hood-code">MouseSpeed = 0 | Threshold = 0</div>
-              <div className="hood-desc">Raw 1:1 mouse input, zero acceleration, linear curve</div>
+              <div className="hood-desc">1:1 raw mouse input, no acceleration, linear movement curve</div>
             </div>
           </div>
         </div>
@@ -735,18 +735,17 @@ function HomePage() {
               <div className="pricing-save-badge">LAUNCH DISCOUNT - SAVE 50%+</div>
               <p className="pricing-note">One-time payment {' | '} No subscription {' | '} Lifetime updates</p>
               <ul className="pricing-features">
-                <li><span className="check">{'//'}</span> 150+ kernel-level system tweaks</li>
-                <li><span className="check">{'//'}</span> DPC/ISR latency optimization</li>
-                <li><span className="check">{'//'}</span> CPU idle state + C-state control</li>
-                <li><span className="check">{'//'}</span> Raw mouse input + USB HID polling</li>
-                <li><span className="check">{'//'}</span> NVIDIA deep registry + D3PCLatency</li>
-                <li><span className="check">{'//'}</span> Timer resolution override (0.5ms)</li>
-                <li><span className="check">{'//'}</span> Per-exe game optimizer engine</li>
-                <li><span className="check">{'//'}</span> Network stack tuning (AFD/Winsock/TCP)</li>
-                <li><span className="check">{'//'}</span> Interrupt affinity isolation</li>
-                <li><span className="check">{'//'}</span> GPU overclock + shader cache control</li>
-                <li><span className="check">{'//'}</span> FACEIT AC 8-point diagnostics</li>
-                <li><span className="check">{'//'}</span> Atomic restore system + lifetime updates</li>
+                <li><span className="check">{'//'}</span> 150+ system and registry tweaks</li>
+                <li><span className="check">{'//'}</span> DPC latency + timer resolution optimization</li>
+                <li><span className="check">{'//'}</span> CPU power state and scheduling control</li>
+                <li><span className="check">{'//'}</span> Raw mouse input + USB device tuning</li>
+                <li><span className="check">{'//'}</span> NVIDIA GPU deep registry tweaks</li>
+                <li><span className="check">{'//'}</span> Per-game auto-optimization engine</li>
+                <li><span className="check">{'//'}</span> Network stack and buffer tuning</li>
+                <li><span className="check">{'//'}</span> Interrupt affinity configuration</li>
+                <li><span className="check">{'//'}</span> GPU overclock profiles</li>
+                <li><span className="check">{'//'}</span> FACEIT AC diagnostics</li>
+                <li><span className="check">{'//'}</span> Full restore system + lifetime updates</li>
               </ul>
               <div className="pricing-email-wrap">
                 <input
@@ -809,8 +808,8 @@ function HomePage() {
               Ready to <span className="gradient-text">Dominate</span>?
             </h2>
             <p className="final-cta-text">
-              Stop bleeding frames to bloated services. Stop losing gunfights to DPC latency spikes.
-              Bypass the throttling. Override the defaults. Unlock kernel-level performance.
+              Stop losing frames to bloated Windows defaults.
+              Get your system optimized in under 5 minutes.
             </p>
             <GlowButton size="lg" onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}>
               Get UziTweaks Now {'->'}
