@@ -1439,8 +1439,6 @@
 
 .screenshot-3d {
   flex: 0 0 420px;
-  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.6s ease;
-  cursor: pointer;
   transform-style: preserve-3d;
 }
 
@@ -1457,11 +1455,6 @@
   transform: perspective(800px) rotateY(-25deg) scale(0.88);
 }
 
-.screenshot-3d:hover {
-  transform: perspective(800px) rotateY(0deg) scale(1.1) translateZ(40px) !important;
-  z-index: 10;
-}
-
 .screenshot-3d-inner {
   position: relative;
   border-radius: 12px;
@@ -1471,16 +1464,6 @@
     0 25px 70px rgba(0, 0, 0, 0.7),
     0 0 50px rgba(0, 212, 255, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.06);
-  transition: box-shadow 0.6s ease, border-color 0.6s ease;
-}
-
-.screenshot-3d:hover .screenshot-3d-inner {
-  border-color: rgba(0, 212, 255, 0.45);
-  box-shadow:
-    0 35px 90px rgba(0, 0, 0, 0.8),
-    0 0 80px rgba(0, 212, 255, 0.15),
-    0 0 140px rgba(0, 212, 255, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .screenshot-3d-inner img {
@@ -1512,11 +1495,6 @@
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: var(--text-dim);
-  transition: color 0.3s ease;
-}
-
-.screenshot-3d:hover .screenshot-3d-label {
-  color: var(--cyan);
 }
 
 /* legacy classes kept for compatibility */
@@ -1559,9 +1537,48 @@
   opacity: 0.5;
 }
 
+@media (max-width: 1400px) {
+  .screenshot-3d {
+    flex: 0 0 340px;
+  }
+  .screenshots-showcase {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .screenshots-showcase {
+    flex-wrap: wrap;
+    gap: 30px;
+    perspective: none;
+  }
+  .screenshot-3d {
+    flex: 0 0 45%;
+  }
+  .screenshot-3d-left,
+  .screenshot-3d-center,
+  .screenshot-3d-right {
+    transform: none;
+  }
+}
+
 @media (max-width: 768px) {
-  .screenshots-grid {
-    grid-template-columns: 1fr;
+  .screenshots {
+    padding: 60px 0;
+  }
+  .screenshots-showcase {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    margin-top: 40px;
+  }
+  .screenshots-showcase-row2 {
+    margin-top: 24px;
+  }
+  .screenshot-3d {
+    flex: 0 0 auto;
+    width: 90%;
+    max-width: 500px;
   }
 }
 
