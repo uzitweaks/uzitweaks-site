@@ -397,32 +397,7 @@ function HomePage() {
         </div>
       </section>
 
-      {/* ========== APP SCREENSHOTS ========== */}
-      <section className="screenshots" id="screenshots">
-        <div className="container">
-          <h2 className="section-title">
-            <span className="gradient-text">See</span> The App
-          </h2>
-          <p className="section-subtitle">
-            This is what you get. Real software, not a hidden script.
-          </p>
-          <div className="screenshots-grid">
-            {[
-              { src: `${import.meta.env.BASE_URL}screenshots/optimize.png`, label: 'System Optimizer' },
-              { src: `${import.meta.env.BASE_URL}screenshots/network.png`, label: 'Network Boost' },
-              { src: `${import.meta.env.BASE_URL}screenshots/benchmark.png`, label: 'Benchmark' },
-              { src: `${import.meta.env.BASE_URL}screenshots/gamecfg.png`, label: 'Game Config' },
-              { src: `${import.meta.env.BASE_URL}screenshots/faceit.png`, label: 'FACEIT Anti-Cheat' },
-              { src: `${import.meta.env.BASE_URL}screenshots/bios.png`, label: 'BIOS Guide' },
-            ].map((s, i) => (
-              <div key={i} className="screenshot-card">
-                <img src={s.src} alt={s.label} loading="lazy" />
-                <div className="screenshot-card-label">{s.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Screenshots removed — users can download free version to see the app */}
 
       {/* ========== WHAT IT CHANGES (TRANSPARENCY) ========== */}
       <section className="tweak-list" id="tweaks">
