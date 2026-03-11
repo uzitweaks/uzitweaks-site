@@ -116,7 +116,7 @@ const faqs = [
   },
   {
     q: 'How does the license work?',
-    a: 'One-time purchase, lifetime license. Key is tied to your hardware ID (HWID). One license per machine. No subscriptions, no recurring charges. Free updates forever.',
+    a: 'Free version includes 15 tweaks, cleaner, benchmark, and startup manager. Premium ($30 one-time) unlocks all 1500+ tweaks, game booster, network tuning, and more. Key is tied to your hardware ID (HWID). One license per machine. No subscriptions. Free updates forever.',
   },
   {
     q: 'What Windows versions are supported?',
@@ -172,7 +172,7 @@ const comparisonData = [
   { feature: 'Game Booster Mode', uzi: true, manual: false, other: 'Basic' },
   { feature: 'Windows Repair Tools', uzi: true, manual: false, other: false },
   { feature: 'Time to Optimize', uzi: '< 5 min', manual: '3-5 hours', other: '15-30 min' },
-  { feature: 'Price', uzi: 'One-time $29.99', manual: 'Free (your time)', other: '$15-80/yr' },
+  { feature: 'Price', uzi: 'Free / $30 Premium', manual: 'Free (your time)', other: '$15-80/yr' },
 ]
 
 const beforeAfterStats = [
@@ -319,7 +319,7 @@ function HomePage() {
             <GlowButton
               variant="green"
               size="lg"
-              href="https://github.com/uzitweaks/uzitweaks-site/releases/latest/download/UziTweaks.exe"
+              href="https://github.com/uzitweaks/releases/releases/latest/download/UziTweaks.exe"
             >
               Download UziTweaks {'->'}
             </GlowButton>
@@ -331,7 +331,7 @@ function HomePage() {
               See Features
             </GlowButton>
           </div>
-          <p className="hero-download-note">Free forever. No account needed. 65MB, runs instantly.</p>
+          <p className="hero-download-note">Free download. No account needed. 65MB, runs instantly. Upgrade to Premium for all 1500+ tweaks.</p>
           <div className="hero-stats">
             <div className="hero-stat">
               <span className="hero-stat-num">1500+</span>
@@ -817,7 +817,7 @@ function HomePage() {
               <div className="step-number">1</div>
               <div className="step-icon-wrap">{'DWN'}</div>
               <h3>Download</h3>
-              <p>Download UziTweaks for free. Try basic optimization, cleaner, and benchmarking with no commitment.</p>
+              <p>Download UziTweaks for free. Try the cleaner, benchmark, and startup manager. Upgrade to Premium to unlock all 1500+ tweaks.</p>
             </div>
             <div className="step-connector">
               <div className="connector-line" />
@@ -843,44 +843,77 @@ function HomePage() {
         </div>
       </section>
 
-      {/* ========== DOWNLOAD ========== */}
+      {/* ========== PRICING ========== */}
       <section className="pricing" id="pricing" ref={pricingRef.ref}>
         <div className={`container fade-in-section ${pricingRef.inView ? 'visible' : ''}`}>
           <h2 className="section-title">
-            <span className="gradient-text">Download</span> UziTweaks
+            <span className="gradient-text">Choose Your</span> Plan
           </h2>
           <p className="section-subtitle">
-            Free. No account. No subscription. Just download and run.
+            Download free and try it. Upgrade to Premium for the full arsenal.
           </p>
-          <div className="download-hero-card">
+          <div className="pricing-grid">
             <NeonCard glow="cyan" hover={false} className="pricing-card">
-              <div className="pricing-popular-badge">FREE FOREVER</div>
+              <div className="pricing-popular-badge">FREE</div>
               <div className="pricing-price">
                 <span className="pricing-currency">$</span>
                 <span className="pricing-amount">0</span>
               </div>
-              <p className="pricing-note">No email required {' | '} No license key {' | '} Lifetime updates</p>
+              <p className="pricing-note">No account {' | '} No email {' | '} Free updates</p>
               <ul className="pricing-features">
-                <li><span className="check">{'//'}</span> All 256 system optimization tweaks</li>
-                <li><span className="check">{'//'}</span> DPC latency + timer resolution optimization</li>
-                <li><span className="check">{'//'}</span> CPU power state and scheduling control</li>
-                <li><span className="check">{'//'}</span> NVIDIA GPU deep registry tweaks</li>
-                <li><span className="check">{'//'}</span> Per-game auto-optimization engine</li>
-                <li><span className="check">{'//'}</span> Network stack tuning + interrupt affinity</li>
-                <li><span className="check">{'//'}</span> 100+ service killer (Intel/DSA bloat included)</li>
-                <li><span className="check">{'//'}</span> Game booster mode + Windows repair tools</li>
-                <li><span className="check">{'//'}</span> Debloater, benchmark, FACEIT AC diagnostics</li>
-                <li><span className="check">{'//'}</span> Full restore system + lifetime updates</li>
+                <li><span className="check">{'//'}</span> 15 system optimization tweaks</li>
+                <li><span className="check">{'//'}</span> Disk cleaner + temp file removal</li>
+                <li><span className="check">{'//'}</span> System benchmark + scoring</li>
+                <li><span className="check">{'//'}</span> Startup manager</li>
+                <li><span className="check">{'//'}</span> Hardware monitor</li>
+                <li><span className="check">{'//'}</span> BIOS guide (auto-detected)</li>
+                <li><span className="check">{'//'}</span> System restore point creation</li>
+                <li className="pricing-feature-disabled">{'--'} 1500+ advanced tweaks</li>
+                <li className="pricing-feature-disabled">{'--'} Game booster + auto-optimizer</li>
+                <li className="pricing-feature-disabled">{'--'} Network stack tuning</li>
               </ul>
               <GlowButton
                 variant="green"
                 size="lg"
-                href="https://github.com/uzitweaks/uzitweaks-site/releases/latest/download/UziTweaks.exe"
+                href="https://github.com/uzitweaks/releases/releases/latest/download/UziTweaks.exe"
                 className="pricing-cta"
               >
-                Download UziTweaks (65MB) {'->'}
+                Download Free {'->'}
               </GlowButton>
-              <p className="pricing-secure">Windows 10/11 {' | '} 65MB {' | '} Single .exe, no installer needed</p>
+              <p className="pricing-secure">Windows 10/11 {' | '} 65MB {' | '} No installer</p>
+            </NeonCard>
+
+            <NeonCard glow="purple" hover={false} className="pricing-card pricing-card-premium">
+              <div className="pricing-popular-badge pricing-badge-premium">PREMIUM</div>
+              <div className="pricing-price">
+                <span className="pricing-currency">$</span>
+                <span className="pricing-amount">30</span>
+              </div>
+              <p className="pricing-note">One-time payment {' | '} Lifetime license {' | '} Free updates forever</p>
+              <ul className="pricing-features">
+                <li><span className="check">{'//'}</span> Everything in Free, plus:</li>
+                <li><span className="check">{'//'}</span> All 1500+ system optimization tweaks</li>
+                <li><span className="check">{'//'}</span> DPC latency + timer resolution tuning</li>
+                <li><span className="check">{'//'}</span> CPU power state + scheduling control</li>
+                <li><span className="check">{'//'}</span> NVIDIA GPU deep registry tweaks</li>
+                <li><span className="check">{'//'}</span> Per-game auto-optimization engine</li>
+                <li><span className="check">{'//'}</span> Network stack tuning + interrupt affinity</li>
+                <li><span className="check">{'//'}</span> Aggressive service killer</li>
+                <li><span className="check">{'//'}</span> Game booster mode + Windows repair</li>
+                <li><span className="check">{'//'}</span> 5-layer virus scanner + FACEIT AC</li>
+              </ul>
+              <GlowButton
+                variant="pink"
+                size="lg"
+                onClick={() => {
+                  navigator.clipboard.writeText('uzitweaks@proton.me')
+                  alert('Contact uzitweaks@proton.me to purchase a Premium license key.\n\nPayment: $30 one-time (crypto accepted).\nYou will receive a license key to activate in the app.')
+                }}
+                className="pricing-cta"
+              >
+                Get Premium {'->'}
+              </GlowButton>
+              <p className="pricing-secure">HWID-locked {' | '} 1 license = 1 PC {' | '} No subscriptions</p>
             </NeonCard>
           </div>
         </div>
@@ -929,7 +962,7 @@ function HomePage() {
             <GlowButton
               variant="green"
               size="lg"
-              href="https://github.com/uzitweaks/uzitweaks-site/releases/latest/download/UziTweaks.exe"
+              href="https://github.com/uzitweaks/releases/releases/latest/download/UziTweaks.exe"
             >
               Download UziTweaks {'->'}
             </GlowButton>

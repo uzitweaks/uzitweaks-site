@@ -1137,6 +1137,22 @@
 /* ============================================
    PRICING
    ============================================ */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+@media (max-width: 700px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+  }
+}
+
 .pricing-card-wrap {
   max-width: 520px;
   margin: 0 auto;
@@ -1323,6 +1339,25 @@
   margin-top: 16px;
   font-size: 0.8rem;
   color: var(--text-dim);
+}
+
+.pricing-card-premium {
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.1);
+}
+
+.pricing-card-premium .pricing-amount {
+  text-shadow: 0 0 30px var(--purple-glow);
+}
+
+.pricing-badge-premium {
+  background: linear-gradient(135deg, var(--purple), var(--pink)) !important;
+  box-shadow: 0 0 20px var(--purple-glow), 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+}
+
+.pricing-feature-disabled {
+  color: var(--text-dim) !important;
+  opacity: 0.45;
 }
 
 .pricing-guarantee {
