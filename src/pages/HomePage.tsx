@@ -310,17 +310,16 @@ function HomePage() {
         <div className="container hero-content">
           <div className="hero-badge">
             <span className="badge-dot" />
-            PREMIUM GAMING SOFTWARE
+            WINDOWS GAMING OPTIMIZER
           </div>
           <h1 className="hero-title">
             <span className="hero-title-line">UZI</span>
             <span className="hero-title-line hero-title-accent">TWEAKS</span>
           </h1>
           <p className="hero-subtitle">
-            Windows gaming optimizer with 150+ system tweaks. DPC latency reduction,
-            timer resolution control, GPU scheduling, network stack tuning, and per-game optimization.
+            Reduce input delay and improve 1% lows for competitive games.
             <br />
-            <strong>One app. Better FPS. Lower input lag.</strong>
+            150+ system tweaks applied in under 5 minutes. Full undo with one click.
           </p>
           <div className="hero-cta-row">
             <GlowButton size="lg" onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}>
@@ -396,6 +395,136 @@ function HomePage() {
               <span className="featured-logo-text">Battle.net</span>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ========== APP SCREENSHOTS ========== */}
+      <section className="screenshots" id="screenshots">
+        <div className="container">
+          <h2 className="section-title">
+            <span className="gradient-text">See</span> The App
+          </h2>
+          <p className="section-subtitle">
+            This is what you get. Real software, not a hidden script.
+          </p>
+          <div className="screenshots-grid">
+            <div className="screenshot-placeholder">
+              <div className="screenshot-label">Main Dashboard</div>
+              <div className="screenshot-inner">
+                <span className="screenshot-hint">Screenshot coming soon</span>
+              </div>
+            </div>
+            <div className="screenshot-placeholder">
+              <div className="screenshot-label">Optimization Tweaks</div>
+              <div className="screenshot-inner">
+                <span className="screenshot-hint">Screenshot coming soon</span>
+              </div>
+            </div>
+            <div className="screenshot-placeholder">
+              <div className="screenshot-label">Benchmark Results</div>
+              <div className="screenshot-inner">
+                <span className="screenshot-hint">Screenshot coming soon</span>
+              </div>
+            </div>
+            <div className="screenshot-placeholder">
+              <div className="screenshot-label">Game Optimizer</div>
+              <div className="screenshot-inner">
+                <span className="screenshot-hint">Screenshot coming soon</span>
+              </div>
+            </div>
+          </div>
+          <p className="screenshots-note">Take screenshots of UziTweaks running and replace these placeholders.</p>
+        </div>
+      </section>
+
+      {/* ========== WHAT IT CHANGES (TRANSPARENCY) ========== */}
+      <section className="tweak-list" id="tweaks">
+        <div className="container">
+          <h2 className="section-title">
+            <span className="gradient-text">What It</span> Actually Changes
+          </h2>
+          <p className="section-subtitle">
+            No mystery box. Here is exactly what UziTweaks does to your system.
+          </p>
+          <div className="tweak-categories">
+            <div className="tweak-cat">
+              <h4 className="tweak-cat-title tweak-cat-red">CPU + Scheduling</h4>
+              <ul className="tweak-cat-list">
+                <li>Win32PrioritySeparation foreground boost</li>
+                <li>Disable CPU power throttling + C-states</li>
+                <li>Disable VBS / Core Isolation (Memory Integrity)</li>
+                <li>Core parking disabled (all cores active)</li>
+                <li>MMCSS game thread priority + scheduling</li>
+                <li>CPU idle state control</li>
+                <li>Physical core affinity (no HT contention)</li>
+              </ul>
+            </div>
+            <div className="tweak-cat">
+              <h4 className="tweak-cat-title tweak-cat-orange">GPU + Display</h4>
+              <ul className="tweak-cat-list">
+                <li>NVIDIA pre-rendered frame reduction (D3PCLatency)</li>
+                <li>GPU preemption disable</li>
+                <li>PowerMizer force max performance</li>
+                <li>Shader cache unlimited</li>
+                <li>MPO (Multi-Plane Overlay) disable</li>
+                <li>TDR timeout increase</li>
+                <li>HDCP overhead removal</li>
+                <li>MSI mode for GPU interrupts</li>
+              </ul>
+            </div>
+            <div className="tweak-cat">
+              <h4 className="tweak-cat-title tweak-cat-yellow">Network</h4>
+              <ul className="tweak-cat-list">
+                <li>Nagle algorithm disable</li>
+                <li>NetworkThrottlingIndex bypass</li>
+                <li>TCP congestion provider (CTCP)</li>
+                <li>Interrupt moderation disable on NIC</li>
+                <li>Flow control disable</li>
+                <li>AFD/Winsock buffer optimization</li>
+                <li>DNS latency benchmark</li>
+                <li>ECN + auto-tuning disable</li>
+              </ul>
+            </div>
+            <div className="tweak-cat">
+              <h4 className="tweak-cat-title tweak-cat-green">Input + Latency</h4>
+              <ul className="tweak-cat-list">
+                <li>Timer resolution set to 0.5ms</li>
+                <li>HPET disable (use TSC instead)</li>
+                <li>Raw mouse input (1:1, no accel)</li>
+                <li>USB selective suspend disable</li>
+                <li>HID device power management off</li>
+                <li>Mouse/keyboard data queue optimization</li>
+                <li>DPC watchdog disable</li>
+                <li>Interrupt affinity isolation</li>
+              </ul>
+            </div>
+            <div className="tweak-cat">
+              <h4 className="tweak-cat-title tweak-cat-blue">Memory + Storage</h4>
+              <ul className="tweak-cat-list">
+                <li>Kernel + drivers locked in RAM</li>
+                <li>Prefetch/Superfetch disable</li>
+                <li>NTFS timestamp + 8.3 name disable</li>
+                <li>Page combining disable</li>
+                <li>I/O page lock limit increase</li>
+                <li>Windows Search indexer kill</li>
+              </ul>
+            </div>
+            <div className="tweak-cat">
+              <h4 className="tweak-cat-title tweak-cat-dim">Services + Debloat</h4>
+              <ul className="tweak-cat-list">
+                <li>50+ unnecessary services disabled</li>
+                <li>Telemetry + diagnostics killed</li>
+                <li>Game DVR / Game Bar removed</li>
+                <li>NVIDIA telemetry tasks disabled</li>
+                <li>Xbox services stopped</li>
+                <li>Defender CPU limited to 15%</li>
+                <li>Touch/pen/handwriting telemetry off</li>
+              </ul>
+            </div>
+          </div>
+          <p className="tweak-list-note">
+            Every tweak has a checkbox. You choose what runs. Real-time output shows every change as it happens.
+          </p>
         </div>
       </section>
 
