@@ -843,9 +843,9 @@ function HomePage() {
           <div className="steps-row">
             <div className="step-card">
               <div className="step-number">1</div>
-              <div className="step-icon-wrap">{'$$$'}</div>
-              <h3>Buy</h3>
-              <p>Purchase your lifetime license via crypto. Key delivered to your email and displayed on-screen instantly.</p>
+              <div className="step-icon-wrap">{'DWN'}</div>
+              <h3>Download</h3>
+              <p>Download UziTweaks for free. Try basic optimization, cleaner, and benchmarking with no commitment.</p>
             </div>
             <div className="step-connector">
               <div className="connector-line" />
@@ -853,9 +853,9 @@ function HomePage() {
             </div>
             <div className="step-card">
               <div className="step-number">2</div>
-              <div className="step-icon-wrap">{'DWN'}</div>
-              <h3>Download</h3>
-              <p>Download UziTweaks, enter your license key, and unlock all features instantly.</p>
+              <div className="step-icon-wrap">{'$$$'}</div>
+              <h3>Upgrade</h3>
+              <p>Purchase a lifetime license key ($29.99) to unlock all 1500+ tweaks, threat scanner, game booster, and every premium feature.</p>
             </div>
             <div className="step-connector">
               <div className="connector-line" />
@@ -865,7 +865,7 @@ function HomePage() {
               <div className="step-number">3</div>
               <div className="step-icon-wrap">{'!!!'}</div>
               <h3>Dominate</h3>
-              <p>Run the 12-step pipeline. Your system is now fully optimized. Go win.</p>
+              <p>Run the full 12-step pipeline. Your system is now fully optimized. Go win.</p>
             </div>
           </div>
         </div>
@@ -894,16 +894,16 @@ function HomePage() {
               <div className="pricing-save-badge">LAUNCH DISCOUNT - SAVE 50%+</div>
               <p className="pricing-note">One-time payment {' | '} No subscription {' | '} Lifetime updates</p>
               <ul className="pricing-features">
-                <li><span className="check">{'//'}</span> Full system optimization — registry, services, power, network</li>
+                <li><span className="check">{'//'}</span> All 1500+ system tweaks (free: 15 basic tweaks)</li>
                 <li><span className="check">{'//'}</span> DPC latency + timer resolution optimization</li>
                 <li><span className="check">{'//'}</span> CPU power state and scheduling control</li>
-                <li><span className="check">{'//'}</span> Raw mouse input + USB device tuning</li>
                 <li><span className="check">{'//'}</span> NVIDIA GPU deep registry tweaks</li>
                 <li><span className="check">{'//'}</span> Per-game auto-optimization engine</li>
-                <li><span className="check">{'//'}</span> Network stack and buffer tuning</li>
-                <li><span className="check">{'//'}</span> Interrupt affinity configuration</li>
-                <li><span className="check">{'//'}</span> GPU overclock profiles</li>
-                <li><span className="check">{'//'}</span> FACEIT AC diagnostics</li>
+                <li><span className="check">{'//'}</span> Network stack tuning + interrupt affinity</li>
+                <li><span className="check">{'//'}</span> 5-layer threat scanner + privacy scanner</li>
+                <li><span className="check">{'//'}</span> Game booster mode + Windows repair tools</li>
+                <li><span className="check">{'//'}</span> GPU overclock profiles + FACEIT AC diagnostics</li>
+                <li><span className="check">{'//'}</span> Windows Update controller</li>
                 <li><span className="check">{'//'}</span> Full restore system + lifetime updates</li>
               </ul>
               <div className="pricing-email-wrap">
@@ -926,6 +926,13 @@ function HomePage() {
                 <span>30-day money-back guarantee. No questions asked.</span>
               </div>
             </NeonCard>
+          </div>
+          <div className="free-download-section">
+            <p className="free-download-text">Just want to try it first?</p>
+            <a href="https://github.com/uzitweaks/uzitweaks-site/releases/latest/download/UziTweaks.exe" className="free-download-btn">
+              Download Free Version
+            </a>
+            <p className="free-download-note">Basic tweaks, cleaner, and benchmarking included. Upgrade anytime from inside the app.</p>
           </div>
         </div>
       </section>

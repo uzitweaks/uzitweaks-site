@@ -1333,6 +1333,44 @@
   font-size: 1.2rem;
 }
 
+.free-download-section {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+
+.free-download-text {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+
+.free-download-btn {
+  display: inline-block;
+  padding: 12px 32px;
+  border: 1.5px solid var(--accent);
+  border-radius: 8px;
+  color: var(--accent);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+}
+
+.free-download-btn:hover {
+  background: rgba(0, 204, 255, 0.08);
+  box-shadow: 0 0 20px rgba(0, 204, 255, 0.15);
+}
+
+.free-download-note {
+  color: var(--text-dim);
+  font-size: 0.78rem;
+  margin-top: 10px;
+  opacity: 0.7;
+}
+
 @media (max-width: 480px) {
   .pricing-card .neon-card-content {
     padding: 32px 24px;
