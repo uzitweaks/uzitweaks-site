@@ -1,0 +1,99 @@
+/* ============================================
+   Cancel Page
+   ============================================ */
+.cancel-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cancel-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 0, 102, 0.05), transparent 70%);
+  pointer-events: none;
+}
+
+.cancel-content {
+  max-width: 520px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.cancel-card .neon-card-content {
+  text-align: center;
+  padding: 48px 40px;
+}
+
+.cancel-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 900;
+  margin: 0 auto 24px;
+  background: rgba(255, 0, 102, 0.1);
+  border: 2px solid rgba(255, 0, 102, 0.3);
+  color: var(--neon-pink);
+  box-shadow: 0 0 30px var(--neon-pink-glow);
+}
+
+.cancel-card h1 {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text-bright);
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.cancel-message {
+  color: var(--text-dim);
+  font-size: 1rem;
+  margin-bottom: 36px;
+  line-height: 1.7;
+}
+
+.cancel-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.cancel-support {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+.cancel-support a {
+  color: var(--cyan);
+  transition: color 0.3s ease;
+}
+
+.cancel-support a:hover {
+  color: var(--text-bright);
+}
+
+@media (max-width: 480px) {
+  .cancel-card .neon-card-content {
+    padding: 32px 20px;
+  }
+
+  .cancel-card h1 {
+    font-size: 1.4rem;
+  }
+}

@@ -1,0 +1,124 @@
+/* ============================================
+   Glow Button
+   ============================================ */
+.glow-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.glow-button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Sizes */
+.glow-sm {
+  padding: 10px 24px;
+  font-size: 0.8rem;
+}
+
+.glow-md {
+  padding: 14px 36px;
+  font-size: 0.95rem;
+}
+
+.glow-lg {
+  padding: 18px 48px;
+  font-size: 1.1rem;
+}
+
+/* Background shimmer layer */
+.glow-button-bg {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glow-button-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ---- Cyan Variant ---- */
+.glow-cyan {
+  background: linear-gradient(135deg, #006680, #00aadd);
+  color: #000;
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.glow-cyan .glow-button-bg {
+  background: linear-gradient(135deg, #00aadd, #00d4ff);
+}
+
+.glow-cyan:hover {
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.5), 0 0 60px rgba(0, 212, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.glow-cyan:hover .glow-button-bg {
+  opacity: 1;
+}
+
+.glow-cyan:active {
+  transform: translateY(0);
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+}
+
+/* ---- Pink Variant ---- */
+.glow-pink {
+  background: linear-gradient(135deg, #990044, #ff0066);
+  color: #fff;
+  box-shadow: 0 0 15px rgba(255, 0, 102, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.glow-pink .glow-button-bg {
+  background: linear-gradient(135deg, #ff0066, #ff3388);
+}
+
+.glow-pink:hover {
+  box-shadow: 0 0 30px rgba(255, 0, 102, 0.5), 0 0 60px rgba(255, 0, 102, 0.2);
+  transform: translateY(-2px);
+}
+
+.glow-pink:hover .glow-button-bg {
+  opacity: 1;
+}
+
+/* ---- Green Variant ---- */
+.glow-green {
+  background: linear-gradient(135deg, #006644, #00cc66);
+  color: #000;
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.glow-green .glow-button-bg {
+  background: linear-gradient(135deg, #00cc66, #00ff88);
+}
+
+.glow-green:hover {
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.5), 0 0 60px rgba(0, 255, 136, 0.2);
+  transform: translateY(-2px);
+}
+
+.glow-green:hover .glow-button-bg {
+  opacity: 1;
+}

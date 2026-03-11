@@ -1,0 +1,295 @@
+/* ============================================
+   UziTweaks — Global Styles
+   Cyberpunk / Neon Gaming Aesthetic
+   ============================================ */
+
+:root {
+  /* Backgrounds */
+  --bg-primary: #000000;
+  --bg-secondary: #050506;
+  --bg-tertiary: #0a0a0e;
+  --bg-card: #08080c;
+  --bg-card-hover: #0c0c12;
+
+  /* Accent colors */
+  --cyan: #00d4ff;
+  --cyan-dark: #0088aa;
+  --cyan-glow: rgba(0, 212, 255, 0.3);
+  --cyan-glow-strong: rgba(0, 212, 255, 0.6);
+  --purple: #bb55ff;
+  --purple-glow: rgba(187, 85, 255, 0.3);
+  --green: #00ff88;
+  --green-glow: rgba(0, 255, 136, 0.3);
+  --red: #ff2255;
+  --orange: #ff8800;
+  --neon-pink: #ff0066;
+  --neon-pink-glow: rgba(255, 0, 102, 0.3);
+
+  /* Text */
+  --text-primary: #d8d8f0;
+  --text-dim: #555566;
+  --text-bright: #ffffff;
+
+  /* Borders */
+  --border: #1a1a22;
+  --border-glow: #00d4ff33;
+
+  /* Fonts */
+  --font-heading: 'Orbitron', sans-serif;
+  --font-body: 'Rajdhani', sans-serif;
+  --font-mono: 'Share Tech Mono', monospace;
+
+  /* Spacing */
+  --section-padding: 100px 0;
+  --container-width: 1200px;
+}
+
+/* Reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Container */
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ============================================
+   Scanline Overlay
+   ============================================ */
+.scanline-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+}
+
+/* ============================================
+   Scrollbar
+   ============================================ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--cyan-dark);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cyan);
+}
+
+/* ============================================
+   Selection
+   ============================================ */
+::selection {
+  background: var(--cyan);
+  color: var(--bg-primary);
+}
+
+/* ============================================
+   Typography Utilities
+   ============================================ */
+.gradient-text {
+  background: linear-gradient(135deg, var(--cyan), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-fire {
+  background: linear-gradient(135deg, var(--orange), var(--neon-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 1.15rem;
+  margin-bottom: 60px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+@keyframes breathingGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px var(--cyan-glow), 0 0 30px rgba(0, 212, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 25px var(--cyan-glow-strong), 0 0 50px var(--cyan-glow);
+  }
+}
+
+@keyframes breathingGlowPink {
+  0%, 100% {
+    box-shadow: 0 0 15px var(--neon-pink-glow), 0 0 30px rgba(255, 0, 102, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255, 0, 102, 0.5), 0 0 50px var(--neon-pink-glow);
+  }
+}
+
+@keyframes textGlow {
+  0%, 100% {
+    text-shadow: 0 0 10px var(--cyan-glow), 0 0 20px rgba(0, 212, 255, 0.1);
+  }
+  50% {
+    text-shadow: 0 0 20px var(--cyan-glow-strong), 0 0 40px var(--cyan-glow);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes borderRotate {
+  0% { --angle: 0deg; }
+  100% { --angle: 360deg; }
+}
+
+/* ============================================
+   Section base
+   ============================================ */
+section {
+  padding: var(--section-padding);
+  position: relative;
+}
+
+section:nth-child(even) {
+  background: var(--bg-secondary);
+}
+
+/* Divider line between sections */
+section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-glow), transparent);
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 60px 0;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/uzitweaks-site/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UziTweaks - Premium Gaming Optimizer</title>
+    <meta name="description" content="UziTweaks is the ultimate Windows gaming optimizer. 100+ registry tweaks, driver management, network optimization, game configs, and more. Dominate every match." />
+    <meta name="keywords" content="gaming optimizer, windows tweaks, fps boost, game optimization, registry tweaks, network optimizer, low latency gaming" />
+    <meta name="theme-color" content="#00d4ff" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="UziTweaks - Premium Gaming Optimizer" />
+    <meta property="og:description" content="The ultimate Windows gaming optimizer. 100+ tweaks, driver management, network optimization, game configs. One click to dominate." />
+    <meta property="og:image" content="/uzitweaks-site/og-image.png" />
+    <meta property="og:url" content="https://yourusername.github.io/uzitweaks-site/" />
+    <meta property="og:site_name" content="UziTweaks" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="UziTweaks - Premium Gaming Optimizer" />
+    <meta name="twitter:description" content="The ultimate Windows gaming optimizer. 100+ tweaks, driver management, network optimization, game configs." />
+    <meta name="twitter:image" content="/uzitweaks-site/og-image.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+
+    <!-- GitHub Pages SPA redirect handler (receives from 404.html) -->
+    <script type="text/javascript">
+      (function(l) {
+        if (l.search[1] === '/') {
+          var decoded = l.search.slice(1).split('&').map(function(s) {
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+            l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
