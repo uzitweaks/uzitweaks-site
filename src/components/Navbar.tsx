@@ -51,7 +51,10 @@ function Navbar() {
             <button onClick={() => handleNavClick('features')}>Features</button>
           </li>
           <li>
-            <button onClick={() => handleNavClick('how-it-works')}>How It Works</button>
+            <button onClick={() => handleNavClick('results')}>Results</button>
+          </li>
+          <li>
+            <button onClick={() => handleNavClick('comparison')}>Compare</button>
           </li>
           <li>
             <button onClick={() => handleNavClick('pricing')}>Pricing</button>

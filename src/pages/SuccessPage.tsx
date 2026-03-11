@@ -76,7 +76,7 @@ function SuccessPage() {
             </NeonCard>
           ) : (
             <NeonCard glow="green" hover={false} className="success-card">
-              <div className="success-icon">\u2713</div>
+              <div className="success-icon">{'\u2713'}</div>
               <h1>Payment <span className="gradient-text">Successful</span>!</h1>
               <p className="success-message">
                 Thank you for purchasing UziTweaks. Your lifetime license key is below.
@@ -86,7 +86,7 @@ function SuccessPage() {
                 <span className="license-key-label">YOUR LICENSE KEY</span>
                 <span className="license-key-value">{licenseKey}</span>
                 <button className="copy-btn">
-                  {copied ? '\u2713 Copied!' : 'Copy'}
+                  {copied ? '\u2713 Copied!' : '\u{1F4CB} Copy'}
                 </button>
               </div>
 
