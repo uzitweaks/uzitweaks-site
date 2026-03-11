@@ -7,35 +7,55 @@ import './SuccessPage.css'
 
 function SuccessPage() {
   const [searchParams] = useSearchParams()
-  const sessionId = searchParams.get('session_id')
+  const orderId = searchParams.get('order_id')
 
   const [licenseKey, setLicenseKey] = useState<string | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+  const [orderStatus, setOrderStatus] = useState<string>('loading')
   const [copied, setCopied] = useState(false)
+  const [retries, setRetries] = useState(0)
 
   useEffect(() => {
-    if (!sessionId) {
-      setError('No session ID found. Please check your email for your license key.')
-      setLoading(false)
+    if (!orderId) {
+      setOrderStatus('no_order')
       return
     }
 
+    let cancelled = false
     const fetchOrder = async () => {
       try {
-        const res = await fetch(`${API_URL}/api/order?session_id=${sessionId}`)
-        if (!res.ok) throw new Error('Failed to fetch order')
+        const res = await fetch(`${API_URL}/api/order?order_id=${orderId}`)
+        if (!res.ok) throw new Error('Order not found')
         const data = await res.json()
-        setLicenseKey(data.license_key || data.licenseKey)
+
+        if (cancelled) return
+
+        if (data.status === 'fulfilled' && data.license_key) {
+          setLicenseKey(data.license_key)
+          setOrderStatus('fulfilled')
+        } else if (data.status === 'pending' || data.status === 'confirming' || data.status === 'waiting') {
+          setOrderStatus('waiting')
+          // Poll every 10 seconds for up to 5 minutes
+          if (retries < 30) {
+            setTimeout(() => setRetries((r) => r + 1), 10000)
+          } else {
+            setOrderStatus('timeout')
+          }
+        } else if (data.status === 'unfulfilled') {
+          setOrderStatus('unfulfilled')
+        } else {
+          setOrderStatus('waiting')
+          if (retries < 30) {
+            setTimeout(() => setRetries((r) => r + 1), 10000)
+          }
+        }
       } catch {
-        setError('Could not retrieve your license key. Please contact support with your session ID.')
-      } finally {
-        setLoading(false)
+        if (!cancelled) setOrderStatus('error')
       }
     }
 
     fetchOrder()
-  }, [sessionId])
+    return () => { cancelled = true }
+  }, [orderId, retries])
 
   const handleCopy = () => {
     if (licenseKey) {
@@ -50,43 +70,31 @@ function SuccessPage() {
       <div className="success-glow" />
       <div className="container">
         <div className="success-content">
-          {loading ? (
-            <div className="success-loading">
-              <div className="spinner" />
-              <p>Retrieving your license key...</p>
-            </div>
-          ) : error ? (
-            <NeonCard glow="pink" hover={false} className="success-card">
-              <div className="success-icon error-icon">!</div>
-              <h1>Something Went Wrong</h1>
-              <p className="success-message">{error}</p>
-              {sessionId && (
-                <p className="session-id">
-                  Session ID: <code>{sessionId}</code>
+          {orderStatus === 'loading' || orderStatus === 'waiting' ? (
+            <NeonCard glow="cyan" hover={false} className="success-card">
+              <div className="success-loading">
+                <div className="spinner" />
+                <h1>Processing <span className="gradient-text">Payment</span></h1>
+                <p className="success-message">
+                  Waiting for crypto confirmation. This can take a few minutes depending on the network.
                 </p>
-              )}
-              <div className="success-actions">
-                <GlowButton variant="pink" onClick={() => window.location.href = 'mailto:support@uzitweaks.com'}>
-                  Contact Support
-                </GlowButton>
-                <Link to="/">
-                  <GlowButton variant="cyan" size="sm">Back to Home</GlowButton>
-                </Link>
+                <p className="success-hint">This page auto-refreshes. Do not close it.</p>
+                {orderId && <p className="session-id">Order: <code>{orderId}</code></p>}
               </div>
             </NeonCard>
-          ) : (
+          ) : orderStatus === 'fulfilled' ? (
             <NeonCard glow="green" hover={false} className="success-card">
-              <div className="success-icon">{'\u2713'}</div>
-              <h1>Payment <span className="gradient-text">Successful</span>!</h1>
+              <div className="success-icon">//</div>
+              <h1>Payment <span className="gradient-text">Confirmed</span></h1>
               <p className="success-message">
-                Thank you for purchasing UziTweaks. Your lifetime license key is below.
+                Your lifetime license key is ready. Copy it and paste into UziTweaks.
               </p>
 
               <div className="license-key-box" onClick={handleCopy}>
                 <span className="license-key-label">YOUR LICENSE KEY</span>
                 <span className="license-key-value">{licenseKey}</span>
                 <button className="copy-btn">
-                  {copied ? '\u2713 Copied!' : '\u{1F4CB} Copy'}
+                  {copied ? '[ COPIED ]' : '[ COPY ]'}
                 </button>
               </div>
 
@@ -97,16 +105,35 @@ function SuccessPage() {
                   <li>Run <code>UziTweaks.exe</code> as Administrator</li>
                   <li>Enter your license key when prompted</li>
                   <li>Run the 9-step optimization pipeline</li>
-                  <li>Dominate your games</li>
                 </ol>
               </div>
 
               <div className="success-actions">
-                <GlowButton size="lg">
-                  Download UziTweaks
-                </GlowButton>
+                <a href={`${API_URL}/api/download`}>
+                  <GlowButton size="lg">Download UziTweaks</GlowButton>
+                </a>
                 <Link to="/">
                   <GlowButton variant="pink" size="sm">Back to Home</GlowButton>
+                </Link>
+              </div>
+            </NeonCard>
+          ) : (
+            <NeonCard glow="pink" hover={false} className="success-card">
+              <div className="success-icon error-icon">//</div>
+              <h1>{orderStatus === 'no_order' ? 'No Order Found' : 'Order Issue'}</h1>
+              <p className="success-message">
+                {orderStatus === 'no_order'
+                  ? 'No order ID found. If you completed a payment, check your email or contact support.'
+                  : orderStatus === 'timeout'
+                    ? 'Payment is taking longer than expected. Your key will be assigned once the transaction confirms on-chain.'
+                    : orderStatus === 'unfulfilled'
+                      ? 'Payment received but no keys available right now. Contact support and we\'ll get you sorted.'
+                      : 'Could not retrieve your order. Please contact support with your order ID.'}
+              </p>
+              {orderId && <p className="session-id">Order: <code>{orderId}</code></p>}
+              <div className="success-actions">
+                <Link to="/">
+                  <GlowButton variant="cyan" size="sm">Back to Home</GlowButton>
                 </Link>
               </div>
             </NeonCard>

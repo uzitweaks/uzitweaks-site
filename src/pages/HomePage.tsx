@@ -11,63 +11,63 @@ const features = [
   {
     step: '01',
     title: 'Drivers',
-    icon: '\u2699\uFE0F',
+    icon: '//GR',
     color: 'cyan' as const,
     desc: 'Auto-detect and install the latest GPU, Network, Audio & Chipset drivers with multi-fallback install system.',
   },
   {
     step: '02',
     title: 'Optimize',
-    icon: '\u26A1',
+    icon: '>>',
     color: 'purple' as const,
     desc: '100+ registry tweaks, power plan optimization, timer resolution, GPU scheduling, MMCSS priority, and more.',
   },
   {
     step: '03',
     title: 'Debloat',
-    icon: '\uD83D\uDDD1\uFE0F',
+    icon: 'X_X',
     color: 'pink' as const,
     desc: 'Remove 60+ bloatware services, disable telemetry, strip UWP apps, kill background processes.',
   },
   {
     step: '04',
     title: 'Net Boost',
-    icon: '\uD83C\uDF10',
+    icon: '<~>',
     color: 'green' as const,
     desc: 'DNS benchmark, Nagle algorithm disable, network throttling removal, QoS optimization for minimal ping.',
   },
   {
     step: '05',
     title: 'Startup',
-    icon: '\uD83D\uDE80',
+    icon: '>>>',
     color: 'orange' as const,
     desc: 'Manage startup programs, disable unnecessary boot services, slash boot time dramatically.',
   },
   {
     step: '06',
     title: 'Cleaner',
-    icon: '\uD83E\uDDF9',
+    icon: 'CLR',
     color: 'cyan' as const,
-    desc: 'Deep disk cleanup \u2014 temp files, caches, Windows Update leftovers, browser data. Reclaim gigabytes.',
+    desc: 'Deep disk cleanup -- temp files, caches, Windows Update leftovers, browser data. Reclaim gigabytes.',
   },
   {
     step: '07',
     title: 'Tools',
-    icon: '\uD83D\uDEE0\uFE0F',
+    icon: '[ ]',
     color: 'purple' as const,
     desc: 'FPS overlay, GPU overclock profiles, RAM cleaner, DPC latency tester, input lag analyzer, monitor optimizer.',
   },
   {
     step: '08',
     title: 'Game Config',
-    icon: '\uD83C\uDFAE',
+    icon: 'CFG',
     color: 'pink' as const,
     desc: 'One-click pro configs for Fortnite, Valorant, CS2, Apex Legends, Rocket League, Rainbow Six Siege.',
   },
   {
     step: '09',
     title: 'Profiles',
-    icon: '\uD83D\uDC51',
+    icon: '///',
     color: 'green' as const,
     desc: 'Per-game optimization profiles with QoS, auto process priority, Defender exclusions, and FSO disable.',
   },
@@ -103,23 +103,23 @@ const faqs = [
 const whyUziTweaks = [
   {
     title: 'Not Just Registry Tweaks',
-    text: 'UziTweaks goes way beyond what YouTube guides show you. MSI mode for all PCI devices, CPU interrupt affinity, MMCSS priority profiles, kernel-level timer resolution, Spectre/Meltdown mitigation control — tweaks most people don\'t even know exist.',
-    icon: '\u{1F527}',
+    text: 'UziTweaks goes way beyond what YouTube guides show you. MSI mode for all PCI devices, CPU interrupt affinity, MMCSS priority profiles, kernel-level timer resolution, Spectre/Meltdown mitigation control --tweaks most people don\'t even know exist.',
+    icon: '>>>',
   },
   {
     title: 'Automated & Reversible',
     text: 'Every tweak generates a full restore script automatically. If something doesn\'t feel right, one click reverts everything. No risk, no guesswork.',
-    icon: '\u{1F6E1}',
+    icon: '<->',
   },
   {
     title: 'Per-Game Intelligence',
     text: 'Auto-detects every game across Steam, Epic, EA, Ubisoft, and Battle.net. Applies FSO disable, GPU preference, CPU priority, and Defender exclusions per-exe.',
-    icon: '\u{1F3AF}',
+    icon: 'OPT',
   },
   {
     title: 'Built for Competitive',
-    text: 'FACEIT AC diagnostics, DPC latency testing, input lag analysis, timer resolution optimization — built by a gamer who understands what competitive players actually need.',
-    icon: '\u{1F3C6}',
+    text: 'FACEIT AC diagnostics, DPC latency testing, input lag analysis, timer resolution optimization --built by a gamer who understands what competitive players actually need.',
+    icon: '///',
   },
 ]
 
@@ -141,12 +141,12 @@ const comparisonData = [
 ]
 
 const beforeAfterStats = [
-  { label: 'Average FPS', before: 165, after: 198, suffix: ' FPS', icon: '\u{1F3AE}' },
-  { label: '1% Low FPS', before: 72, after: 105, suffix: ' FPS', icon: '\u{1F4C8}' },
-  { label: 'Input Latency', before: 12, after: 5, suffix: 'ms', icon: '\u{1F5B1}' },
-  { label: 'Boot Time', before: 45, after: 14, suffix: 's', icon: '\u{26A1}' },
-  { label: 'Background Processes', before: 180, after: 85, suffix: '', icon: '\u{1F4BB}' },
-  { label: 'DPC Latency', before: 650, after: 120, suffix: '\u00B5s', icon: '\u{1F50C}' },
+  { label: 'Average FPS', before: 165, after: 198, suffix: ' FPS', icon: '>>' },
+  { label: '1% Low FPS', before: 72, after: 105, suffix: ' FPS', icon: '/\\' },
+  { label: 'Input Latency', before: 12, after: 5, suffix: 'ms', icon: '...' },
+  { label: 'Boot Time', before: 45, after: 14, suffix: 's', icon: '<<<' },
+  { label: 'Background Processes', before: 180, after: 85, suffix: '', icon: 'SYS' },
+  { label: 'DPC Latency', before: 650, after: 120, suffix: 'us', icon: 'DPC' },
 ]
 
 /* ============================================
@@ -302,7 +302,7 @@ function HomePage() {
           </p>
           <div className="hero-cta-row">
             <GlowButton size="lg" onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}>
-              Get UziTweaks {'\u2192'}
+              Get UziTweaks {'->'}
             </GlowButton>
             <GlowButton
               variant="pink"
@@ -343,23 +343,23 @@ function HomePage() {
           </div>
           <div className="trust-badges">
             <div className="trust-badge">
-              <div className="trust-badge-icon">{'\u{1F6E1}'}</div>
+              <div className="trust-badge-icon">{'[X]'}</div>
               <span>Anti-Cheat Safe</span>
             </div>
             <div className="trust-badge">
-              <div className="trust-badge-icon">{'\u{1F512}'}</div>
+              <div className="trust-badge-icon">{'{=}'}</div>
               <span>Secure Checkout</span>
             </div>
             <div className="trust-badge">
-              <div className="trust-badge-icon">{'\u{267B}'}</div>
+              <div className="trust-badge-icon">{'<->'}</div>
               <span>Fully Reversible</span>
             </div>
             <div className="trust-badge">
-              <div className="trust-badge-icon">{'\u{1F3C6}'}</div>
+              <div className="trust-badge-icon">{'INF'}</div>
               <span>Lifetime License</span>
             </div>
             <div className="trust-badge">
-              <div className="trust-badge-icon">{'\u{26A1}'}</div>
+              <div className="trust-badge-icon">{'.9.'}</div>
               <span>.NET 9 Powered</span>
             </div>
           </div>
@@ -413,32 +413,32 @@ function HomePage() {
           </p>
           <div className="extras-grid">
             <div className="extra-item">
-              <div className="extra-icon-wrap pink">{'\u{1F3AF}'}</div>
+              <div className="extra-icon-wrap pink">{'#01'}</div>
               <h4>Dual Benchmark</h4>
               <p>Optimization Score (0-100) scans your Windows state. Hardware Score benchmarks raw CPU, disk, RAM, and network performance.</p>
             </div>
             <div className="extra-item">
-              <div className="extra-icon-wrap cyan">{'\u{1F4CA}'}</div>
+              <div className="extra-icon-wrap cyan">{'FPS'}</div>
               <h4>FPS Overlay</h4>
               <p>Real-time FPS counter overlay that works with any game. Lightweight, always-on-top, no performance impact.</p>
             </div>
             <div className="extra-item">
-              <div className="extra-icon-wrap green">{'\u{1F3AE}'}</div>
+              <div className="extra-icon-wrap green">{'OPT'}</div>
               <h4>Game Optimizer</h4>
               <p>Detects all installed games across Steam, Epic, EA, Ubisoft, and Battle.net. Applies per-exe Windows optimizations automatically.</p>
             </div>
             <div className="extra-item">
-              <div className="extra-icon-wrap purple">{'\u{1F4BE}'}</div>
+              <div className="extra-icon-wrap purple">{'CPU'}</div>
               <h4>Auto Process Lasso</h4>
               <p>Detects game launches in real-time and automatically sets CPU priority, affinity, and I/O priority for maximum performance.</p>
             </div>
             <div className="extra-item">
-              <div className="extra-icon-wrap orange">{'\u{1F525}'}</div>
+              <div className="extra-icon-wrap orange">{'GPU'}</div>
               <h4>GPU Overclock</h4>
               <p>NVIDIA GPU overclock profiles built in. Apply tested overclock presets or create custom profiles with one click.</p>
             </div>
             <div className="extra-item">
-              <div className="extra-icon-wrap pink">{'\u{1F6E1}'}</div>
+              <div className="extra-icon-wrap pink">{'AC/'}</div>
               <h4>FACEIT AC Ready</h4>
               <p>Built-in FACEIT Anti-Cheat diagnostics. Checks Secure Boot, TPM, VBS, unsigned drivers, and fixes common issues.</p>
             </div>
@@ -474,14 +474,14 @@ function HomePage() {
                       <span className="ba-val-label">BEFORE</span>
                       <span className="ba-val-num before-num">{stat.before}{stat.suffix}</span>
                     </div>
-                    <div className="ba-arrow">{'\u2192'}</div>
+                    <div className="ba-arrow">{'->'}</div>
                     <div className="ba-after">
                       <span className="ba-val-label">AFTER</span>
                       <span className="ba-val-num after-num">{stat.after}{stat.suffix}</span>
                     </div>
                   </div>
                   <div className={`ba-improvement ${isReduction ? 'reduction' : 'increase'}`}>
-                    {isReduction ? `\u2193 ${improvement}% lower` : `\u2191 ${improvement}% higher`}
+                    {isReduction ? `v ${improvement}% lower` : `^ ${improvement}% higher`}
                   </div>
                 </div>
               )
@@ -505,7 +505,7 @@ function HomePage() {
           <div className="video-wrapper">
             <div className="video-placeholder">
               <div className="video-play-btn">
-                <div className="play-icon">{'\u25B6'}</div>
+                <div className="play-icon">{'>'}</div>
               </div>
               <div className="video-overlay-text">
                 <span className="video-badge">DEMO VIDEO</span>
@@ -545,18 +545,18 @@ function HomePage() {
                   <tr key={i}>
                     <td className="comp-feature-name">{row.feature}</td>
                     <td className="comp-uzi-val">
-                      {row.uzi === true ? <span className="comp-check">{'\u2713'}</span> :
-                       row.uzi === false ? <span className="comp-x">{'\u2715'}</span> :
+                      {row.uzi === true ? <span className="comp-check">{'//'}</span> :
+                       row.uzi === false ? <span className="comp-x">{'x'}</span> :
                        <span className="comp-text-val">{row.uzi}</span>}
                     </td>
                     <td className="comp-other-val">
-                      {row.manual === true ? <span className="comp-check dim">{'\u2713'}</span> :
-                       row.manual === false ? <span className="comp-x">{'\u2715'}</span> :
+                      {row.manual === true ? <span className="comp-check dim">{'//'}</span> :
+                       row.manual === false ? <span className="comp-x">{'x'}</span> :
                        <span className="comp-text-val dim">{row.manual}</span>}
                     </td>
                     <td className="comp-other-val">
-                      {row.other === true ? <span className="comp-check dim">{'\u2713'}</span> :
-                       row.other === false ? <span className="comp-x">{'\u2715'}</span> :
+                      {row.other === true ? <span className="comp-check dim">{'//'}</span> :
+                       row.other === false ? <span className="comp-x">{'x'}</span> :
                        <span className="comp-text-val dim">{row.other}</span>}
                     </td>
                   </tr>
@@ -608,27 +608,27 @@ function HomePage() {
           <div className="steps-row">
             <div className="step-card">
               <div className="step-number">1</div>
-              <div className="step-icon-wrap">{'\u{1F4B3}'}</div>
+              <div className="step-icon-wrap">{'$$$'}</div>
               <h3>Buy</h3>
               <p>Purchase your lifetime license. Instant delivery via email and on-screen.</p>
             </div>
             <div className="step-connector">
               <div className="connector-line" />
-              <div className="connector-arrow">{'\u25B6'}</div>
+              <div className="connector-arrow">{'>'}</div>
             </div>
             <div className="step-card">
               <div className="step-number">2</div>
-              <div className="step-icon-wrap">{'\u2B07\uFE0F'}</div>
+              <div className="step-icon-wrap">{'DWN'}</div>
               <h3>Download</h3>
               <p>Download UziTweaks, enter your license key, and unlock all features instantly.</p>
             </div>
             <div className="step-connector">
               <div className="connector-line" />
-              <div className="connector-arrow">{'\u25B6'}</div>
+              <div className="connector-arrow">{'>'}</div>
             </div>
             <div className="step-card">
               <div className="step-number">3</div>
-              <div className="step-icon-wrap">{'\u{1F451}'}</div>
+              <div className="step-icon-wrap">{'!!!'}</div>
               <h3>Dominate</h3>
               <p>Run the 9-step pipeline. Your system is now fully optimized. Go win.</p>
             </div>
@@ -657,27 +657,27 @@ function HomePage() {
                 <span className="pricing-amount">29.99</span>
               </div>
               <div className="pricing-save-badge">LAUNCH DISCOUNT - SAVE 50%+</div>
-              <p className="pricing-note">One-time payment {'\u00B7'} No subscription {'\u00B7'} Lifetime updates</p>
+              <p className="pricing-note">One-time payment {' | '} No subscription {' | '} Lifetime updates</p>
               <ul className="pricing-features">
-                <li><span className="check">{'\u2713'}</span> All 9 optimization steps</li>
-                <li><span className="check">{'\u2713'}</span> 100+ registry & system tweaks</li>
-                <li><span className="check">{'\u2713'}</span> Driver auto-detection & install</li>
-                <li><span className="check">{'\u2713'}</span> Network optimizer with DNS benchmark</li>
-                <li><span className="check">{'\u2713'}</span> Game configs (Fortnite, Valorant, CS2, etc.)</li>
-                <li><span className="check">{'\u2713'}</span> Per-game optimizer (Steam, Epic, EA, Ubisoft)</li>
-                <li><span className="check">{'\u2713'}</span> FPS overlay & dual benchmark</li>
-                <li><span className="check">{'\u2713'}</span> GPU overclock profiles</li>
-                <li><span className="check">{'\u2713'}</span> Auto Process Lasso</li>
-                <li><span className="check">{'\u2713'}</span> FACEIT AC diagnostics</li>
-                <li><span className="check">{'\u2713'}</span> Full restore / undo system</li>
-                <li><span className="check">{'\u2713'}</span> Lifetime updates</li>
+                <li><span className="check">{'//'}</span> All 9 optimization steps</li>
+                <li><span className="check">{'//'}</span> 100+ registry & system tweaks</li>
+                <li><span className="check">{'//'}</span> Driver auto-detection & install</li>
+                <li><span className="check">{'//'}</span> Network optimizer with DNS benchmark</li>
+                <li><span className="check">{'//'}</span> Game configs (Fortnite, Valorant, CS2, etc.)</li>
+                <li><span className="check">{'//'}</span> Per-game optimizer (Steam, Epic, EA, Ubisoft)</li>
+                <li><span className="check">{'//'}</span> FPS overlay & dual benchmark</li>
+                <li><span className="check">{'//'}</span> GPU overclock profiles</li>
+                <li><span className="check">{'//'}</span> Auto Process Lasso</li>
+                <li><span className="check">{'//'}</span> FACEIT AC diagnostics</li>
+                <li><span className="check">{'//'}</span> Full restore / undo system</li>
+                <li><span className="check">{'//'}</span> Lifetime updates</li>
               </ul>
               <GlowButton size="lg" onClick={handleBuyNow} disabled={buying} className="pricing-cta">
-                {buying ? 'Redirecting to Stripe...' : 'Buy Now \u2192'}
+                {buying ? 'Redirecting to checkout...' : 'Buy Now ->'}
               </GlowButton>
-              <p className="pricing-secure">{'\u{1F512}'} Secure checkout via Stripe {'\u00B7'} Instant delivery</p>
+              <p className="pricing-secure">{'{=}'} Secure crypto checkout {' | '} Instant key delivery</p>
               <div className="pricing-guarantee">
-                <div className="guarantee-icon">{'\u{1F6E1}'}</div>
+                <div className="guarantee-icon">{'[X]'}</div>
                 <span>30-day money-back guarantee. No questions asked.</span>
               </div>
             </NeonCard>
@@ -703,7 +703,7 @@ function HomePage() {
               >
                 <div className="faq-question">
                   <span>{faq.q}</span>
-                  <span className="faq-toggle">{openFaq === i ? '\u2212' : '+'}</span>
+                  <span className="faq-toggle">{openFaq === i ? '-' : '+'}</span>
                 </div>
                 <div className="faq-answer">
                   <p>{faq.a}</p>
@@ -726,7 +726,7 @@ function HomePage() {
               your system's true performance.
             </p>
             <GlowButton size="lg" onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}>
-              Get UziTweaks Now {'\u2192'}
+              Get UziTweaks Now {'->'}
             </GlowButton>
           </div>
         </div>
