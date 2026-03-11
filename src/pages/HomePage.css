@@ -1122,13 +1122,16 @@
   max-width: 520px;
   margin: 0 auto;
   position: relative;
+  padding-top: 20px;
 }
 
 .pricing-card {
   position: relative;
+  overflow: visible !important;
 }
 
 .pricing-card .neon-card-content {
+  overflow: visible;
   text-align: center;
   padding: 48px 40px;
 }

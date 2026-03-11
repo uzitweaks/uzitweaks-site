@@ -100,34 +100,26 @@ const faqs = [
   },
 ]
 
-const testimonials = [
+const whyUziTweaks = [
   {
-    name: 'xReaperGG',
-    game: 'Fortnite Competitive',
-    rating: 5,
-    text: 'Went from 120fps drops to consistent 240fps in stacked endgames. The network optimizer alone cut my ping by 15ms. This is not placebo, the difference is night and day.',
-    avatar: 'R',
+    title: 'Not Just Registry Tweaks',
+    text: 'UziTweaks goes way beyond what YouTube guides show you. MSI mode for all PCI devices, CPU interrupt affinity, MMCSS priority profiles, kernel-level timer resolution, Spectre/Meltdown mitigation control — tweaks most people don\'t even know exist.',
+    icon: '\u{1F527}',
   },
   {
-    name: 'AceValorant',
-    game: 'Valorant / Immortal',
-    rating: 5,
-    text: 'My 1% lows improved massively. No more micro-stutters during gunfights. The FACEIT AC checker saved me hours of troubleshooting. Worth every penny.',
-    avatar: 'A',
+    title: 'Automated & Reversible',
+    text: 'Every tweak generates a full restore script automatically. If something doesn\'t feel right, one click reverts everything. No risk, no guesswork.',
+    icon: '\u{1F6E1}',
   },
   {
-    name: 'ProdigyCS',
-    game: 'CS2 / FACEIT Level 10',
-    rating: 5,
-    text: 'Timer resolution fix + DPC latency optimization made my mouse feel completely different. Input lag went from 8ms to under 3ms. If you play competitive FPS, you need this.',
-    avatar: 'P',
+    title: 'Per-Game Intelligence',
+    text: 'Auto-detects every game across Steam, Epic, EA, Ubisoft, and Battle.net. Applies FSO disable, GPU preference, CPU priority, and Defender exclusions per-exe.',
+    icon: '\u{1F3AF}',
   },
   {
-    name: 'TurboApex',
-    game: 'Apex Legends / Master',
-    rating: 5,
-    text: 'The per-game optimizer detected all my Steam and EA games automatically. One click and everything was optimized. Boot time went from 45s to 12s. Insane.',
-    avatar: 'T',
+    title: 'Built for Competitive',
+    text: 'FACEIT AC diagnostics, DPC latency testing, input lag analysis, timer resolution optimization — built by a gamer who understands what competitive players actually need.',
+    icon: '\u{1F3C6}',
   },
 ]
 
@@ -149,12 +141,12 @@ const comparisonData = [
 ]
 
 const beforeAfterStats = [
-  { label: 'Average FPS', before: 142, after: 237, suffix: ' FPS', icon: '\u{1F3AE}' },
-  { label: '1% Low FPS', before: 68, after: 165, suffix: ' FPS', icon: '\u{1F4C8}' },
-  { label: 'Input Latency', before: 12, after: 3, suffix: 'ms', icon: '\u{1F5B1}' },
-  { label: 'Boot Time', before: 48, after: 11, suffix: 's', icon: '\u{26A1}' },
-  { label: 'Network Ping', before: 42, after: 18, suffix: 'ms', icon: '\u{1F310}' },
-  { label: 'DPC Latency', before: 850, after: 95, suffix: '\u00B5s', icon: '\u{1F50C}' },
+  { label: 'Average FPS', before: 165, after: 198, suffix: ' FPS', icon: '\u{1F3AE}' },
+  { label: '1% Low FPS', before: 72, after: 105, suffix: ' FPS', icon: '\u{1F4C8}' },
+  { label: 'Input Latency', before: 12, after: 5, suffix: 'ms', icon: '\u{1F5B1}' },
+  { label: 'Boot Time', before: 45, after: 14, suffix: 's', icon: '\u{26A1}' },
+  { label: 'Background Processes', before: 180, after: 85, suffix: '', icon: '\u{1F4BB}' },
+  { label: 'DPC Latency', before: 650, after: 120, suffix: '\u00B5s', icon: '\u{1F50C}' },
 ]
 
 /* ============================================
@@ -240,21 +232,6 @@ function HeroParticles() {
 }
 
 /* ============================================
-   Star Rating
-   ============================================ */
-function StarRating({ count }: { count: number }) {
-  return (
-    <div className="star-rating">
-      {Array.from({ length: 5 }, (_, i) => (
-        <span key={i} className={`star ${i < count ? 'filled' : ''}`}>
-          {'\u2605'}
-        </span>
-      ))}
-    </div>
-  )
-}
-
-/* ============================================
    HomePage Component
    ============================================ */
 function HomePage() {
@@ -274,8 +251,8 @@ function HomePage() {
   const faqRef = useInView(0.1)
   const ctaRef = useInView(0.3)
 
-  // Animated gamer counter
-  const gamerCount = useCountUp(12847, 2000, trustRef.inView)
+  // Animated tweak counter
+  const tweakCount = useCountUp(100, 1500, trustRef.inView)
 
   const handleBuyNow = async () => {
     setBuying(true)
@@ -284,18 +261,17 @@ function HomePage() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
       })
-      if (!res.ok) {
-        throw new Error(`Server returned ${res.status}`)
-      }
       const data = await res.json()
       if (data.url) {
         window.location.href = data.url
+      } else if (data.error) {
+        alert(data.error)
+        setBuying(false)
       } else {
-        throw new Error('No checkout URL returned')
+        throw new Error('Checkout unavailable')
       }
-    } catch (err) {
-      console.error('Checkout error:', err)
-      alert('Something went wrong. Please try again or contact support@uzitweaks.com')
+    } catch {
+      alert('Checkout is being set up. Please check back soon or contact us on Discord.')
       setBuying(false)
     }
   }
@@ -362,8 +338,8 @@ function HomePage() {
       <section className="trust-section" id="trust" ref={trustRef.ref}>
         <div className={`container fade-in-section ${trustRef.inView ? 'visible' : ''}`}>
           <div className="trust-counter">
-            <div className="trust-counter-number">{gamerCount.toLocaleString()}+</div>
-            <div className="trust-counter-label">Gamers Trust UziTweaks</div>
+            <div className="trust-counter-number">{tweakCount}+</div>
+            <div className="trust-counter-label">System Optimizations Built In</div>
           </div>
           <div className="trust-badges">
             <div className="trust-badge">
@@ -477,7 +453,7 @@ function HomePage() {
             <span className="gradient-text-fire">Before</span> vs <span className="gradient-text">After</span>
           </h2>
           <p className="section-subtitle">
-            Real performance gains measured on mid-range hardware. Results vary by system, but the improvement is always significant.
+            Typical improvements on a bloated Windows system. Results depend on your current system state and hardware.
           </p>
           <div className="ba-grid">
             {beforeAfterStats.map((stat, i) => {
@@ -512,7 +488,7 @@ function HomePage() {
             })}
           </div>
           <p className="ba-disclaimer">
-            * Tested on Intel i5-12400F / RTX 4060 Ti / 16GB DDR4 / NVMe SSD. Individual results may vary.
+            * Measured on a typical mid-range gaming PC with a bloated Windows install. Clean installs will see smaller gains. Results vary by system.
           </p>
         </div>
       </section>
@@ -591,31 +567,29 @@ function HomePage() {
         </div>
       </section>
 
-      {/* ========== TESTIMONIALS ========== */}
-      <section className="testimonials" id="testimonials" ref={testimonialsRef.ref}>
+      {/* ========== WHY UZITWEAKS ========== */}
+      <section className="testimonials" id="why" ref={testimonialsRef.ref}>
         <div className={`container fade-in-section ${testimonialsRef.inView ? 'visible' : ''}`}>
           <h2 className="section-title">
-            <span className="gradient-text">What Gamers</span> Are Saying
+            <span className="gradient-text">Why</span> UziTweaks
           </h2>
           <p className="section-subtitle">
-            Real reviews from competitive players who switched to UziTweaks.
+            What makes this different from a YouTube guide or free optimizer.
           </p>
           <div className="testimonials-grid">
-            {testimonials.map((t, i) => (
+            {whyUziTweaks.map((item, i) => (
               <div
                 key={i}
                 className={`testimonial-card fade-in-card ${testimonialsRef.inView ? 'visible' : ''}`}
                 style={{ animationDelay: `${i * 0.12}s` }}
               >
                 <div className="testimonial-header">
-                  <div className="testimonial-avatar">{t.avatar}</div>
+                  <div className="testimonial-avatar">{item.icon}</div>
                   <div className="testimonial-info">
-                    <div className="testimonial-name">{t.name}</div>
-                    <div className="testimonial-game">{t.game}</div>
+                    <div className="testimonial-name">{item.title}</div>
                   </div>
                 </div>
-                <StarRating count={t.rating} />
-                <p className="testimonial-text">&ldquo;{t.text}&rdquo;</p>
+                <p className="testimonial-text">{item.text}</p>
               </div>
             ))}
           </div>
