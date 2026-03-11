@@ -410,33 +410,18 @@ function HomePage() {
           <p className="section-subtitle">
             This is what you get. Real software, not a hidden script.
           </p>
-          <div className="screenshots-showcase">
+          <div className="screenshots-grid">
             {[
-              { src: `${import.meta.env.BASE_URL}screenshots/optimize.png`, label: 'System Optimizer', angle: 'left' },
-              { src: `${import.meta.env.BASE_URL}screenshots/network.png`, label: 'Network Boost', angle: 'center' },
-              { src: `${import.meta.env.BASE_URL}screenshots/benchmark.png`, label: 'Benchmark', angle: 'right' },
+              { src: `${import.meta.env.BASE_URL}screenshots/optimize.png`, label: 'System Optimizer' },
+              { src: `${import.meta.env.BASE_URL}screenshots/network.png`, label: 'Network Boost' },
+              { src: `${import.meta.env.BASE_URL}screenshots/benchmark.png`, label: 'Benchmark' },
+              { src: `${import.meta.env.BASE_URL}screenshots/gamecfg.png`, label: 'Game Config' },
+              { src: `${import.meta.env.BASE_URL}screenshots/faceit.png`, label: 'FACEIT Anti-Cheat' },
+              { src: `${import.meta.env.BASE_URL}screenshots/bios.png`, label: 'BIOS Guide' },
             ].map((s, i) => (
-              <div key={i} className={`screenshot-3d screenshot-3d-${s.angle}`}>
-                <div className="screenshot-3d-inner">
-                  <img src={s.src} alt={s.label} loading="lazy" />
-                  <div className="screenshot-3d-reflection" />
-                </div>
-                <div className="screenshot-3d-label">{s.label}</div>
-              </div>
-            ))}
-          </div>
-          <div className="screenshots-showcase screenshots-showcase-row2">
-            {[
-              { src: `${import.meta.env.BASE_URL}screenshots/gamecfg.png`, label: 'Game Config', angle: 'left' },
-              { src: `${import.meta.env.BASE_URL}screenshots/faceit.png`, label: 'FACEIT Anti-Cheat', angle: 'center' },
-              { src: `${import.meta.env.BASE_URL}screenshots/bios.png`, label: 'BIOS Guide', angle: 'right' },
-            ].map((s, i) => (
-              <div key={i} className={`screenshot-3d screenshot-3d-${s.angle}`}>
-                <div className="screenshot-3d-inner">
-                  <img src={s.src} alt={s.label} loading="lazy" />
-                  <div className="screenshot-3d-reflection" />
-                </div>
-                <div className="screenshot-3d-label">{s.label}</div>
+              <div key={i} className="screenshot-card">
+                <img src={s.src} alt={s.label} loading="lazy" />
+                <div className="screenshot-card-label">{s.label}</div>
               </div>
             ))}
           </div>
