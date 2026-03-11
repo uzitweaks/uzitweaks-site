@@ -20,7 +20,7 @@ const features = [
     title: 'Optimize',
     icon: '>>',
     color: 'purple' as const,
-    desc: '150+ system tweaks including thread scheduling, DPC latency reduction, timer resolution, GPU scheduling priority, power plan tuning, and memory management.',
+    desc: 'Deep system optimization across thread scheduling, DPC latency, timer resolution, GPU priority, power states, and memory management. Over 1500 individual tweaks.',
   },
   {
     step: '03',
@@ -136,7 +136,7 @@ const whyUziTweaks = [
 ]
 
 const comparisonData = [
-  { feature: 'Registry + System Tweaks', uzi: '150+', manual: '10-20', other: '30-50' },
+  { feature: 'Registry + System Tweaks', uzi: '1500+', manual: '10-20', other: '30-50' },
   { feature: 'DPC Latency Optimization', uzi: true, manual: false, other: false },
   { feature: 'CPU Power State Control', uzi: true, manual: false, other: false },
   { feature: 'NVIDIA Deep GPU Tweaks', uzi: true, manual: false, other: false },
@@ -266,7 +266,7 @@ function HomePage() {
   const ctaRef = useInView(0.3)
 
   // Animated tweak counter
-  const tweakCount = useCountUp(150, 1500, trustRef.inView)
+  const tweakCount = useCountUp(500, 1500, trustRef.inView)
 
   const handleBuyNow = async () => {
     // Validate email
@@ -316,10 +316,13 @@ function HomePage() {
             <span className="hero-title-line">UZI</span>
             <span className="hero-title-line hero-title-accent">TWEAKS</span>
           </h1>
+          <p className="hero-motto">
+            "Built by a gamer who lost one too many gunfights to a frame drop."
+          </p>
           <p className="hero-subtitle">
             Reduce input delay and improve 1% lows for competitive games.
             <br />
-            150+ system tweaks applied in under 5 minutes. Full undo with one click.
+            Every layer of Windows optimized in under 5 minutes. Fully reversible with one click.
           </p>
           <div className="hero-cta-row">
             <GlowButton size="lg" onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}>
@@ -335,7 +338,7 @@ function HomePage() {
           </div>
           <div className="hero-stats">
             <div className="hero-stat">
-              <span className="hero-stat-num">150+</span>
+              <span className="hero-stat-num">1500+</span>
               <span className="hero-stat-label">System Tweaks</span>
             </div>
             <div className="hero-stat-divider" />
@@ -407,33 +410,36 @@ function HomePage() {
           <p className="section-subtitle">
             This is what you get. Real software, not a hidden script.
           </p>
-          <div className="screenshots-grid">
-            <div className="screenshot-placeholder">
-              <div className="screenshot-label">Main Dashboard</div>
-              <div className="screenshot-inner">
-                <span className="screenshot-hint">Screenshot coming soon</span>
+          <div className="screenshots-showcase">
+            {[
+              { src: '/screenshots/optimize.png', label: 'System Optimizer', angle: 'left' },
+              { src: '/screenshots/network.png', label: 'Network Boost', angle: 'center' },
+              { src: '/screenshots/benchmark.png', label: 'Benchmark', angle: 'right' },
+            ].map((s, i) => (
+              <div key={i} className={`screenshot-3d screenshot-3d-${s.angle}`}>
+                <div className="screenshot-3d-inner">
+                  <img src={s.src} alt={s.label} loading="lazy" />
+                  <div className="screenshot-3d-reflection" />
+                </div>
+                <div className="screenshot-3d-label">{s.label}</div>
               </div>
-            </div>
-            <div className="screenshot-placeholder">
-              <div className="screenshot-label">Optimization Tweaks</div>
-              <div className="screenshot-inner">
-                <span className="screenshot-hint">Screenshot coming soon</span>
-              </div>
-            </div>
-            <div className="screenshot-placeholder">
-              <div className="screenshot-label">Benchmark Results</div>
-              <div className="screenshot-inner">
-                <span className="screenshot-hint">Screenshot coming soon</span>
-              </div>
-            </div>
-            <div className="screenshot-placeholder">
-              <div className="screenshot-label">Game Optimizer</div>
-              <div className="screenshot-inner">
-                <span className="screenshot-hint">Screenshot coming soon</span>
-              </div>
-            </div>
+            ))}
           </div>
-          <p className="screenshots-note">Take screenshots of UziTweaks running and replace these placeholders.</p>
+          <div className="screenshots-showcase screenshots-showcase-row2">
+            {[
+              { src: '/screenshots/gamecfg.png', label: 'Game Config', angle: 'left' },
+              { src: '/screenshots/faceit.png', label: 'FACEIT Anti-Cheat', angle: 'center' },
+              { src: '/screenshots/bios.png', label: 'BIOS Guide', angle: 'right' },
+            ].map((s, i) => (
+              <div key={i} className={`screenshot-3d screenshot-3d-${s.angle}`}>
+                <div className="screenshot-3d-inner">
+                  <img src={s.src} alt={s.label} loading="lazy" />
+                  <div className="screenshot-3d-reflection" />
+                </div>
+                <div className="screenshot-3d-label">{s.label}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -864,7 +870,7 @@ function HomePage() {
               <div className="pricing-save-badge">LAUNCH DISCOUNT - SAVE 50%+</div>
               <p className="pricing-note">One-time payment {' | '} No subscription {' | '} Lifetime updates</p>
               <ul className="pricing-features">
-                <li><span className="check">{'//'}</span> 150+ system and registry tweaks</li>
+                <li><span className="check">{'//'}</span> Full system optimization — registry, services, power, network</li>
                 <li><span className="check">{'//'}</span> DPC latency + timer resolution optimization</li>
                 <li><span className="check">{'//'}</span> CPU power state and scheduling control</li>
                 <li><span className="check">{'//'}</span> Raw mouse input + USB device tuning</li>
