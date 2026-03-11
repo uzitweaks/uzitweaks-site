@@ -930,9 +930,9 @@ function HomePage() {
           <div className="free-download-section">
             <p className="free-download-text">Just want to try it first?</p>
             <a href="https://github.com/uzitweaks/uzitweaks-site/releases/latest/download/UziTweaks.exe" className="free-download-btn">
-              Download Free Version
+              Download UziTweaks
             </a>
-            <p className="free-download-note">Basic tweaks, cleaner, and benchmarking included. Upgrade anytime from inside the app.</p>
+            <p className="free-download-note">Full version — 256 tweaks, debloater, benchmark, network optimizer, game configs. Free forever.</p>
           </div>
         </div>
       </section>
