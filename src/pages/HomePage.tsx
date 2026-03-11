@@ -452,7 +452,7 @@ function HomePage() {
               <ul className="tweak-cat-list">
                 <li>Win32PrioritySeparation foreground boost</li>
                 <li>Disable CPU power throttling + C-states</li>
-                <li>Disable VBS / Core Isolation (Memory Integrity)</li>
+                <li>Thread quantum + priority separation tuning</li>
                 <li>Core parking disabled (all cores active)</li>
                 <li>MMCSS game thread priority + scheduling</li>
                 <li>CPU idle state control</li>
