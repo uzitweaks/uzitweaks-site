@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import GlowButton from '../components/GlowButton'
 import NeonCard from '../components/NeonCard'
-import { API_URL } from '../config'
 import './HomePage.css'
 
 /* ============================================
@@ -272,9 +271,6 @@ function HeroParticles() {
    ============================================ */
 function HomePage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
-  const [buying, setBuying] = useState(false)
-  const [email, setEmail] = useState('')
-  const [emailError, setEmailError] = useState('')
 
   // Scroll reveal refs
   const trustRef = useInView(0.3)
@@ -292,35 +288,6 @@ function HomePage() {
   // Animated tweak counter
   const tweakCount = useCountUp(500, 1500, trustRef.inView)
 
-  const handleBuyNow = async () => {
-    // Validate email
-    const trimmed = email.trim()
-    if (!trimmed || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) {
-      setEmailError('Enter a valid email to receive your license key.')
-      return
-    }
-    setEmailError('')
-    setBuying(true)
-    try {
-      const res = await fetch(`${API_URL}/api/checkout`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: trimmed }),
-      })
-      const data = await res.json()
-      if (data.url) {
-        window.location.href = data.url
-      } else if (data.error) {
-        alert(data.error)
-        setBuying(false)
-      } else {
-        throw new Error('Checkout unavailable')
-      }
-    } catch {
-      alert('Checkout is being set up. Please check back soon or contact us on Discord.')
-      setBuying(false)
-    }
-  }
 
   return (
     <main className="home">
@@ -349,8 +316,12 @@ function HomePage() {
             Every layer of Windows optimized in under 5 minutes. Fully reversible with one click.
           </p>
           <div className="hero-cta-row">
-            <GlowButton size="lg" onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}>
-              Get UziTweaks {'->'}
+            <GlowButton
+              variant="green"
+              size="lg"
+              href="https://github.com/uzitweaks/uzitweaks-site/releases/latest/download/UziTweaks.exe"
+            >
+              Download UziTweaks {'->'}
             </GlowButton>
             <GlowButton
               variant="pink"
@@ -360,6 +331,7 @@ function HomePage() {
               See Features
             </GlowButton>
           </div>
+          <p className="hero-download-note">Free forever. No account needed. 65MB, runs instantly.</p>
           <div className="hero-stats">
             <div className="hero-stat">
               <span className="hero-stat-num">1500+</span>
@@ -853,9 +825,9 @@ function HomePage() {
             </div>
             <div className="step-card">
               <div className="step-number">2</div>
-              <div className="step-icon-wrap">{'$$$'}</div>
-              <h3>Upgrade</h3>
-              <p>Purchase a lifetime license key ($29.99) to unlock all 1500+ tweaks, threat scanner, game booster, and every premium feature.</p>
+              <div className="step-icon-wrap">{'>>>'}</div>
+              <h3>Run</h3>
+              <p>Launch UziTweaks and run the full optimization pipeline. 256 tweaks across CPU, GPU, network, memory, and power settings applied in minutes.</p>
             </div>
             <div className="step-connector">
               <div className="connector-line" />
@@ -871,68 +843,45 @@ function HomePage() {
         </div>
       </section>
 
-      {/* ========== PRICING ========== */}
+      {/* ========== DOWNLOAD ========== */}
       <section className="pricing" id="pricing" ref={pricingRef.ref}>
         <div className={`container fade-in-section ${pricingRef.inView ? 'visible' : ''}`}>
           <h2 className="section-title">
-            <span className="gradient-text">Get</span> UziTweaks
+            <span className="gradient-text">Download</span> UziTweaks
           </h2>
           <p className="section-subtitle">
-            One purchase. Lifetime access. No subscriptions. No hidden fees.
+            Free. No account. No subscription. Just download and run.
           </p>
-          <div className="pricing-card-wrap">
+          <div className="download-hero-card">
             <NeonCard glow="cyan" hover={false} className="pricing-card">
-              <div className="pricing-popular-badge">MOST POPULAR</div>
-              <div className="pricing-badge">LIFETIME LICENSE</div>
-              <div className="pricing-original-price">
-                <span className="strikethrough">$79.99</span>
-              </div>
+              <div className="pricing-popular-badge">FREE FOREVER</div>
               <div className="pricing-price">
                 <span className="pricing-currency">$</span>
-                <span className="pricing-amount">29.99</span>
+                <span className="pricing-amount">0</span>
               </div>
-              <div className="pricing-save-badge">LAUNCH DISCOUNT - SAVE 50%+</div>
-              <p className="pricing-note">One-time payment {' | '} No subscription {' | '} Lifetime updates</p>
+              <p className="pricing-note">No email required {' | '} No license key {' | '} Lifetime updates</p>
               <ul className="pricing-features">
-                <li><span className="check">{'//'}</span> All 1500+ system tweaks (free: 15 basic tweaks)</li>
+                <li><span className="check">{'//'}</span> All 256 system optimization tweaks</li>
                 <li><span className="check">{'//'}</span> DPC latency + timer resolution optimization</li>
                 <li><span className="check">{'//'}</span> CPU power state and scheduling control</li>
                 <li><span className="check">{'//'}</span> NVIDIA GPU deep registry tweaks</li>
                 <li><span className="check">{'//'}</span> Per-game auto-optimization engine</li>
                 <li><span className="check">{'//'}</span> Network stack tuning + interrupt affinity</li>
-                <li><span className="check">{'//'}</span> 5-layer threat scanner + privacy scanner</li>
+                <li><span className="check">{'//'}</span> 100+ service killer (Intel/DSA bloat included)</li>
                 <li><span className="check">{'//'}</span> Game booster mode + Windows repair tools</li>
-                <li><span className="check">{'//'}</span> GPU overclock profiles + FACEIT AC diagnostics</li>
-                <li><span className="check">{'//'}</span> Windows Update controller</li>
+                <li><span className="check">{'//'}</span> Debloater, benchmark, FACEIT AC diagnostics</li>
                 <li><span className="check">{'//'}</span> Full restore system + lifetime updates</li>
               </ul>
-              <div className="pricing-email-wrap">
-                <input
-                  type="email"
-                  className={`pricing-email-input ${emailError ? 'error' : ''}`}
-                  placeholder="Enter your email for license delivery"
-                  value={email}
-                  onChange={(e) => { setEmail(e.target.value); setEmailError('') }}
-                  onKeyDown={(e) => e.key === 'Enter' && handleBuyNow()}
-                />
-                {emailError && <span className="pricing-email-error">{emailError}</span>}
-              </div>
-              <GlowButton size="lg" onClick={handleBuyNow} disabled={buying} className="pricing-cta">
-                {buying ? 'Redirecting to checkout...' : 'Buy Now ->'}
+              <GlowButton
+                variant="green"
+                size="lg"
+                href="https://github.com/uzitweaks/uzitweaks-site/releases/latest/download/UziTweaks.exe"
+                className="pricing-cta"
+              >
+                Download UziTweaks (65MB) {'->'}
               </GlowButton>
-              <p className="pricing-secure">{'{=}'} Secure crypto checkout {' | '} Key delivered to your email + on-screen</p>
-              <div className="pricing-guarantee">
-                <div className="guarantee-icon">{'[X]'}</div>
-                <span>30-day money-back guarantee. No questions asked.</span>
-              </div>
+              <p className="pricing-secure">Windows 10/11 {' | '} 65MB {' | '} Single .exe, no installer needed</p>
             </NeonCard>
-          </div>
-          <div className="free-download-section">
-            <p className="free-download-text">Just want to try it first?</p>
-            <a href="https://github.com/uzitweaks/uzitweaks-site/releases/latest/download/UziTweaks.exe" className="free-download-btn">
-              Download UziTweaks
-            </a>
-            <p className="free-download-note">Full version — 256 tweaks, debloater, benchmark, network optimizer, game configs. Free forever.</p>
           </div>
         </div>
       </section>
@@ -977,8 +926,12 @@ function HomePage() {
               Stop losing frames to bloated Windows defaults.
               Get your system optimized in under 5 minutes.
             </p>
-            <GlowButton size="lg" onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}>
-              Get UziTweaks Now {'->'}
+            <GlowButton
+              variant="green"
+              size="lg"
+              href="https://github.com/uzitweaks/uzitweaks-site/releases/latest/download/UziTweaks.exe"
+            >
+              Download UziTweaks {'->'}
             </GlowButton>
           </div>
         </div>
