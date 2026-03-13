@@ -295,6 +295,36 @@ function HeroParticles() {
    ============================================ */
 function HomePage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
+  const [checkoutEmail, setCheckoutEmail] = useState('')
+  const [checkoutLoading, setCheckoutLoading] = useState(false)
+  const [checkoutError, setCheckoutError] = useState('')
+
+  const handleCheckout = async () => {
+    const email = checkoutEmail.trim()
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setCheckoutError('Enter a valid email to receive your license key.')
+      return
+    }
+    setCheckoutLoading(true)
+    setCheckoutError('')
+    try {
+      const res = await fetch('https://uzitweaks-api.majmuniking3.workers.dev/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+      const data = await res.json()
+      if (data.url) {
+        window.location.href = data.url
+      } else {
+        setCheckoutError(data.error || 'Failed to create payment. Try again.')
+      }
+    } catch {
+      setCheckoutError('Network error. Please try again.')
+    } finally {
+      setCheckoutLoading(false)
+    }
+  }
 
   // Scroll reveal refs
   const trustRef = useInView(0.3)
@@ -901,18 +931,26 @@ function HomePage() {
                 <li><span className="check">{'//'}</span> Game booster mode + Windows repair</li>
                 <li><span className="check">{'//'}</span> 5-layer virus scanner + FACEIT AC</li>
               </ul>
-              <GlowButton
-                variant="pink"
-                size="lg"
-                onClick={() => {
-                  navigator.clipboard.writeText('uzitweaks@proton.me')
-                  alert('Contact uzitweaks@proton.me to purchase a Premium license key.\n\nPayment: $30 one-time (crypto accepted).\nYou will receive a license key to activate in the app.')
-                }}
-                className="pricing-cta"
-              >
-                Get Premium {'->'}
-              </GlowButton>
-              <p className="pricing-secure">HWID-locked {' | '} 1 license = 1 PC {' | '} No subscriptions</p>
+              <div className="checkout-form">
+                <input
+                  type="email"
+                  placeholder="Your email for license delivery"
+                  value={checkoutEmail}
+                  onChange={(e) => { setCheckoutEmail(e.target.value); setCheckoutError('') }}
+                  className="checkout-email"
+                  onKeyDown={(e) => e.key === 'Enter' && handleCheckout()}
+                />
+                {checkoutError && <p className="checkout-error">{checkoutError}</p>}
+                <GlowButton
+                  variant="pink"
+                  size="lg"
+                  onClick={handleCheckout}
+                  className="pricing-cta"
+                >
+                  {checkoutLoading ? 'Redirecting...' : <>Get Premium {'->'}</>}
+                </GlowButton>
+              </div>
+              <p className="pricing-secure">Crypto payment via NOWPayments {' | '} HWID-locked {' | '} 1 PC {' | '} No subscriptions</p>
             </NeonCard>
           </div>
         </div>
