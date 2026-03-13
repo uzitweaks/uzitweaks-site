@@ -91,6 +91,27 @@ const features = [
     color: 'purple' as const,
     desc: 'SFC scan, DISM repair, Windows Update reset, DLL re-registration, Store repair, and network stack reset. Fix corrupted files and broken updates in one click.',
   },
+  {
+    step: '13',
+    title: 'App Uninstaller',
+    icon: 'DEL',
+    color: 'pink' as const,
+    desc: 'Full app manager with icons, sizes, and deep clean. Force-remove stubborn apps along with leftover files, registry keys, services, and scheduled tasks.',
+  },
+  {
+    step: '14',
+    title: 'Driver Cleaner',
+    icon: 'DRV',
+    color: 'orange' as const,
+    desc: 'Built-in Display Driver Uninstaller. Detects your GPU and driver version, then cleanly removes all GPU driver files, registry entries, and services for a fresh reinstall.',
+  },
+  {
+    step: '15',
+    title: 'GPU Tools',
+    icon: 'GPU',
+    color: 'green' as const,
+    desc: 'Dedicated NVIDIA/AMD page with GPU detection. Launch NVIDIA Profile Inspector with optimized preset, debloat NVIDIA telemetry and services, or apply AMD power tweaks.',
+  },
 ]
 
 const faqs = [
@@ -171,6 +192,9 @@ const comparisonData = [
   { feature: 'Built-in Threat Scanner', uzi: true, manual: false, other: false },
   { feature: 'Game Booster Mode', uzi: true, manual: false, other: 'Basic' },
   { feature: 'Windows Repair Tools', uzi: true, manual: false, other: false },
+  { feature: 'App Uninstaller + Deep Clean', uzi: true, manual: false, other: 'Basic' },
+  { feature: 'GPU Tools (NPI + Debloat)', uzi: true, manual: false, other: false },
+  { feature: 'Built-in Driver Cleaner', uzi: true, manual: 'Separate app', other: false },
   { feature: 'Time to Optimize', uzi: '< 5 min', manual: '3-5 hours', other: '15-30 min' },
   { feature: 'Price', uzi: 'Free / $30 Premium', manual: 'Free (your time)', other: '$15-80/yr' },
 ]
