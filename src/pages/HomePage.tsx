@@ -190,30 +190,19 @@ const whyUziTweaks = [
   },
 ]
 
-const comparisonData = [
-  { feature: 'Registry + System Tweaks', uzi: '1500+', manual: '10-20', other: '30-50' },
-  { feature: 'DPC Latency Optimization', uzi: true, manual: false, other: false },
-  { feature: 'CPU Power State Control', uzi: true, manual: false, other: false },
-  { feature: 'NVIDIA Deep GPU Tweaks', uzi: true, manual: false, other: false },
-  { feature: 'Timer Resolution (0.5ms)', uzi: true, manual: 'Needs ISLC', other: false },
-  { feature: 'Interrupt Affinity Setup', uzi: true, manual: false, other: false },
-  { feature: 'Raw Mouse Input Fix', uzi: true, manual: 'Partial', other: false },
-  { feature: 'Per-Game Auto-Optimization', uzi: true, manual: false, other: false },
-  { feature: 'Network Stack Tuning', uzi: true, manual: false, other: 'Basic' },
-  { feature: 'USB / Input Device Tweaks', uzi: true, manual: false, other: false },
-  { feature: 'Auto Restore System', uzi: true, manual: false, other: 'Partial' },
-  { feature: 'FACEIT AC Diagnostics', uzi: true, manual: false, other: false },
-  { feature: 'Built-in Threat Scanner', uzi: true, manual: false, other: false },
-  { feature: 'Game Booster Mode', uzi: true, manual: false, other: 'Basic' },
-  { feature: 'Windows Repair Tools', uzi: true, manual: false, other: false },
-  { feature: 'App Uninstaller + Deep Clean', uzi: true, manual: false, other: 'Basic' },
-  { feature: 'GPU Tools (NPI + Debloat)', uzi: true, manual: false, other: false },
-  { feature: 'Built-in Driver Cleaner', uzi: true, manual: 'Separate app', other: false },
-  { feature: 'VR / Anti-Cheat Protection', uzi: true, manual: false, other: false },
-  { feature: 'Real-time Sparkline Monitoring', uzi: true, manual: false, other: false },
-  { feature: 'Cafe Mode (DeepFreeze)', uzi: true, manual: false, other: false },
-  { feature: 'Time to Optimize', uzi: '< 5 min', manual: '3-5 hours', other: '15-30 min' },
-  { feature: 'Price', uzi: 'Free / $30 Premium', manual: 'Free (your time)', other: '$15-80/yr' },
+const stockVsOptimized = [
+  { metric: 'Background Processes', stock: '180+', optimized: '~85' },
+  { metric: 'Startup Programs', stock: '30+', optimized: '8-12' },
+  { metric: 'Running Services', stock: '150+', optimized: '~70' },
+  { metric: 'Timer Resolution', stock: '15.6ms', optimized: '0.5ms' },
+  { metric: 'CPU Core Parking', stock: 'Enabled', optimized: 'Disabled' },
+  { metric: 'Mouse Acceleration', stock: 'On', optimized: 'Off (1:1 Raw)' },
+  { metric: 'Network Throttling', stock: '10 Mbps limit', optimized: 'Unlimited' },
+  { metric: 'GPU Pre-rendered Frames', stock: '3 (default)', optimized: '1 (low latency)' },
+  { metric: 'Nagle Algorithm', stock: 'Enabled (adds delay)', optimized: 'Disabled' },
+  { metric: 'Telemetry & Data Collection', stock: 'Full', optimized: 'Disabled' },
+  { metric: 'Power Plan', stock: 'Balanced', optimized: 'Ultimate Performance' },
+  { metric: 'DPC Latency', stock: '500-1000us', optimized: '< 150us' },
 ]
 
 const beforeAfterStats = [
@@ -787,47 +776,30 @@ function HomePage() {
         </div>
       </section>
 
-      {/* ========== COMPARISON TABLE ========== */}
+      {/* ========== STOCK vs OPTIMIZED ========== */}
       <section className="comparison" id="comparison" ref={comparisonRef.ref}>
         <div className={`container fade-in-section ${comparisonRef.inView ? 'visible' : ''}`}>
           <h2 className="section-title">
-            <span className="gradient-text">UziTweaks</span> vs The Rest
+            <span className="gradient-text">Stock Windows</span> vs After UziTweaks
           </h2>
           <p className="section-subtitle">
-            Stop wasting hours on YouTube guides. Stop paying subscriptions for half-baked tools.
+            See exactly what changes on your system after running UziTweaks.
           </p>
           <div className="comparison-table-wrap">
             <table className="comparison-table">
               <thead>
                 <tr>
-                  <th className="comp-feature-col">Feature</th>
-                  <th className="comp-uzi-col">
-                    <div className="comp-header-badge">BEST VALUE</div>
-                    UziTweaks
-                  </th>
-                  <th className="comp-other-col">YouTube / Manual</th>
-                  <th className="comp-other-col">Other Optimizers</th>
+                  <th className="comp-feature-col">Setting</th>
+                  <th className="comp-other-col stock-col">Stock Windows</th>
+                  <th className="comp-uzi-col">After UziTweaks</th>
                 </tr>
               </thead>
               <tbody>
-                {comparisonData.map((row, i) => (
+                {stockVsOptimized.map((row, i) => (
                   <tr key={i}>
-                    <td className="comp-feature-name">{row.feature}</td>
-                    <td className="comp-uzi-val">
-                      {row.uzi === true ? <span className="comp-check">{'//'}</span> :
-                       row.uzi === false ? <span className="comp-x">{'x'}</span> :
-                       <span className="comp-text-val">{row.uzi}</span>}
-                    </td>
-                    <td className="comp-other-val">
-                      {row.manual === true ? <span className="comp-check dim">{'//'}</span> :
-                       row.manual === false ? <span className="comp-x">{'x'}</span> :
-                       <span className="comp-text-val dim">{row.manual}</span>}
-                    </td>
-                    <td className="comp-other-val">
-                      {row.other === true ? <span className="comp-check dim">{'//'}</span> :
-                       row.other === false ? <span className="comp-x">{'x'}</span> :
-                       <span className="comp-text-val dim">{row.other}</span>}
-                    </td>
+                    <td className="comp-feature-name">{row.metric}</td>
+                    <td className="comp-other-val"><span className="comp-stock-val">{row.stock}</span></td>
+                    <td className="comp-uzi-val"><span className="comp-text-val">{row.optimized}</span></td>
                   </tr>
                 ))}
               </tbody>
@@ -912,7 +884,7 @@ function HomePage() {
             <span className="gradient-text">Choose Your</span> Plan
           </h2>
           <p className="section-subtitle">
-            Download free and try it. Upgrade to Premium for the full arsenal.
+            Download free and try it. Upgrade to Premium for the full experience.
           </p>
           <div className="pricing-grid">
             <NeonCard glow="cyan" hover={false} className="pricing-card">

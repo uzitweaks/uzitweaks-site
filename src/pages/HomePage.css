@@ -810,7 +810,6 @@
 .comparison-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 700px;
 }
 
 .comparison-table thead {
@@ -915,6 +914,36 @@
 
 .comp-text-val.dim {
   color: var(--text-dim);
+}
+
+.comp-stock-val {
+  color: var(--red);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  opacity: 0.7;
+}
+
+.stock-col {
+  color: var(--red) !important;
+}
+
+@media (max-width: 600px) {
+  .comparison-table {
+    min-width: 0;
+    font-size: 0.8rem;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 10px 8px;
+    font-size: 0.75rem;
+  }
+
+  .comp-text-val,
+  .comp-stock-val {
+    font-size: 0.7rem;
+  }
 }
 
 /* ============================================
@@ -1144,12 +1173,29 @@
   max-width: 900px;
   margin: 0 auto;
   padding-top: 20px;
+  align-items: stretch;
+}
+
+.pricing-grid > * {
+  display: flex;
+  flex-direction: column;
+}
+
+.pricing-grid .neon-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.pricing-grid .checkout-form,
+.pricing-grid .pricing-cta {
+  margin-top: auto;
 }
 
 @media (max-width: 700px) {
   .pricing-grid {
     grid-template-columns: 1fr;
-    max-width: 480px;
+    max-width: 420px;
   }
 }
 
@@ -1389,6 +1435,7 @@
 .pricing-badge-premium {
   background: linear-gradient(135deg, var(--purple), var(--pink)) !important;
   box-shadow: 0 0 20px var(--purple-glow), 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+  color: #ffffff !important;
 }
 
 .pricing-feature-disabled {
@@ -1849,5 +1896,155 @@
 
   .ba-val-num {
     font-size: 1.1rem;
+  }
+
+  /* Mobile: reduce hero text */
+  .hero-title-line {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+    letter-spacing: 6px;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+    padding: 0 8px;
+  }
+
+  .hero-download-note {
+    font-size: 0.75rem;
+    padding: 0 8px;
+  }
+
+  .hero-stats {
+    gap: 16px;
+  }
+
+  .hero-stat-num {
+    font-size: 1.6rem;
+  }
+
+  .hero-stat-label {
+    font-size: 0.7rem;
+  }
+
+  /* Mobile: section titles */
+  .section-title {
+    font-size: 1.4rem !important;
+  }
+
+  .section-subtitle {
+    font-size: 0.85rem !important;
+    padding: 0 8px;
+  }
+
+  /* Mobile: pricing cards */
+  .pricing-card .neon-card-content {
+    padding: 28px 16px;
+  }
+
+  .pricing-amount {
+    font-size: 3rem;
+  }
+
+  .pricing-currency {
+    font-size: 1.4rem;
+  }
+
+  .pricing-features li {
+    font-size: 0.8rem;
+  }
+
+  .pricing-note {
+    font-size: 0.75rem;
+  }
+
+  .pricing-secure {
+    font-size: 0.7rem;
+  }
+
+  /* Mobile: feature cards */
+  .feature-desc {
+    font-size: 0.82rem;
+  }
+
+  .feature-title {
+    font-size: 1rem;
+  }
+
+  /* Mobile: extras */
+  .extra-item h4 {
+    font-size: 0.9rem;
+  }
+
+  .extra-item p {
+    font-size: 0.8rem;
+  }
+
+  .extra-icon-wrap {
+    width: 48px;
+    height: 48px;
+    font-size: 1.4rem;
+  }
+
+  /* Mobile: container padding */
+  .container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  /* Mobile: FAQ */
+  .faq-question {
+    padding: 14px 16px;
+    font-size: 0.85rem;
+  }
+
+  .faq-answer p {
+    font-size: 0.82rem;
+  }
+
+  .faq-item.open .faq-answer {
+    padding: 0 16px 14px;
+  }
+
+  /* Mobile: before/after */
+  .ba-card {
+    padding: 20px 16px;
+  }
+
+  /* Mobile: tweak categories */
+  .tweak-cat {
+    padding: 16px;
+  }
+
+  .tweak-cat-list li {
+    font-size: 0.75rem;
+  }
+
+  /* Mobile: under the hood */
+  .hood-item {
+    padding: 14px;
+  }
+
+  .hood-code {
+    font-size: 0.7rem;
+    padding: 6px 8px;
+  }
+
+  .hood-desc {
+    font-size: 0.7rem;
+  }
+
+  /* Mobile: how it works */
+  .step-card {
+    padding: 28px 16px;
+  }
+
+  .step-card p {
+    font-size: 0.8rem;
+  }
+
+  /* Mobile: final CTA */
+  .final-cta-text {
+    font-size: 0.95rem;
+    padding: 0 8px;
   }
 }
