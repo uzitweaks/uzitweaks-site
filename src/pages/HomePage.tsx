@@ -54,62 +54,76 @@ const features = [
     title: 'Tools',
     icon: '[ ]',
     color: 'purple' as const,
-    desc: 'FPS overlay, GPU overclock profiles, RAM cleaner, DPC latency tester, input lag analyzer, monitor response optimizer, game booster mode, and Windows repair tools.',
+    desc: 'FPS overlay, GPU overclock profiles, RAM cleaner, DPC latency tester, input lag analyzer, one-click Windows activation (MAS HWID), and game essentials installer.',
   },
   {
     step: '08',
     title: 'Game Config',
     icon: 'CFG',
     color: 'pink' as const,
-    desc: 'One-click competitive configs for CS2, Fortnite, Valorant, Apex, Rocket League, and R6 Siege. Autoexec, launch options, and engine settings.',
+    desc: 'One-click competitive configs for CS2, Fortnite, Valorant, Apex, Rocket League, R6 Siege, Overwatch 2, COD Warzone, and more. Autoexec, launch options, and engine settings.',
   },
   {
     step: '09',
     title: 'Profiles',
     icon: '///',
     color: 'green' as const,
-    desc: 'Auto-detects installed games and applies per-game optimizations: GPU preference, CPU priority, Defender exclusions, and fullscreen behavior.',
+    desc: '5 built-in presets (Safe Gaming, Competitive FPS, Max Performance, Developer, Internet Cafe) plus per-game auto-optimization with GPU preference, CPU priority, and Defender exclusions.',
   },
   {
     step: '10',
+    title: 'Monitor',
+    icon: 'MON',
+    color: 'cyan' as const,
+    desc: 'Real-time sparkline dashboard with CPU, GPU, RAM, VRAM, Disk, and Network graphs. Baseline vs post-tweak comparison with export. Overlay mode for in-game monitoring.',
+  },
+  {
+    step: '11',
     title: 'Virus Scan',
     icon: 'SCN',
     color: 'orange' as const,
     desc: '5-layer threat detector: autorun persistence, live process analysis, crypto miner detection, system tamper checks, and VirusTotal hash lookups. Quarantine and force-remove any threat.',
   },
   {
-    step: '11',
-    title: 'Game Booster',
-    icon: 'BST',
-    color: 'cyan' as const,
-    desc: 'One-click game boost mode. Kills bloatware processes, purges RAM, sets 0.5ms timer resolution, enables focus assist, and sets your game to high priority.',
-  },
-  {
     step: '12',
-    title: 'Windows Repair',
-    icon: 'FIX',
+    title: 'DeepFreeze',
+    icon: 'ICE',
     color: 'purple' as const,
-    desc: 'SFC scan, DISM repair, Windows Update reset, DLL re-registration, Store repair, and network stack reset. Fix corrupted files and broken updates in one click.',
+    desc: 'Golden image backup and restore for internet cafes. Snapshots files, registry (display, audio, power, mouse settings), and system state. One-click boot restore with HKLM registry recovery.',
   },
   {
     step: '13',
-    title: 'App Uninstaller',
-    icon: 'DEL',
+    title: 'BIOS Guide',
+    icon: 'BIO',
     color: 'pink' as const,
-    desc: 'Full app manager with icons, sizes, and deep clean. Force-remove stubborn apps along with leftover files, registry keys, services, and scheduled tasks.',
+    desc: 'Auto-detects your motherboard and CPU. Shows optimal BIOS settings for gaming. XMP/EXPO memory profile detection with speed comparison. Direct links to your BIOS update page.',
   },
   {
     step: '14',
-    title: 'Driver Cleaner',
-    icon: 'DRV',
-    color: 'orange' as const,
-    desc: 'Built-in Display Driver Uninstaller. Detects your GPU and driver version, then cleanly removes all GPU driver files, registry entries, and services for a fresh reinstall.',
+    title: 'Windows Repair',
+    icon: 'FIX',
+    color: 'green' as const,
+    desc: 'SFC scan, DISM repair, Windows Update reset, DLL re-registration, Store repair, and network stack reset. Fix corrupted files and broken updates in one click.',
   },
   {
     step: '15',
+    title: 'App Uninstaller',
+    icon: 'DEL',
+    color: 'orange' as const,
+    desc: 'Full app manager with icons, sizes, and deep clean. Force-remove stubborn apps along with leftover files, registry keys, services, and scheduled tasks.',
+  },
+  {
+    step: '16',
+    title: 'Driver Cleaner',
+    icon: 'DRV',
+    color: 'cyan' as const,
+    desc: 'Built-in Display Driver Uninstaller. Detects your GPU and driver version, then cleanly removes all GPU driver files, registry entries, and services for a fresh reinstall.',
+  },
+  {
+    step: '17',
     title: 'GPU Tools',
     icon: 'GPU',
-    color: 'green' as const,
+    color: 'purple' as const,
     desc: 'Dedicated NVIDIA/AMD page with GPU detection. Launch NVIDIA Profile Inspector with optimized preset, debloat NVIDIA telemetry and services, or apply AMD power tweaks.',
   },
 ]
@@ -121,7 +135,7 @@ const faqs = [
   },
   {
     q: 'Will this get me banned in competitive games?',
-    a: 'No. UziTweaks only modifies Windows registry values, system services, power plans, and network stack parameters. It does not inject into, hook, or modify any game process or file. Fully compatible with FACEIT AC, Vanguard, EAC, and BattlEye.',
+    a: 'No. UziTweaks only modifies Windows registry values, system services, power plans, and network stack parameters. It does not inject into, hook, or modify any game process or file. Anti-cheat services (RiotVanguard, EasyAntiCheat, BattlEye) and VR services (Meta Quest Link, SteamVR, Oculus) are explicitly protected and never disabled by any tweak.',
   },
   {
     q: 'What exactly does it change? Can I see the tweaks?',
@@ -195,6 +209,9 @@ const comparisonData = [
   { feature: 'App Uninstaller + Deep Clean', uzi: true, manual: false, other: 'Basic' },
   { feature: 'GPU Tools (NPI + Debloat)', uzi: true, manual: false, other: false },
   { feature: 'Built-in Driver Cleaner', uzi: true, manual: 'Separate app', other: false },
+  { feature: 'VR / Anti-Cheat Protection', uzi: true, manual: false, other: false },
+  { feature: 'Real-time Sparkline Monitoring', uzi: true, manual: false, other: false },
+  { feature: 'Cafe Mode (DeepFreeze)', uzi: true, manual: false, other: false },
   { feature: 'Time to Optimize', uzi: '< 5 min', manual: '3-5 hours', other: '15-30 min' },
   { feature: 'Price', uzi: 'Free / $30 Premium', manual: 'Free (your time)', other: '$15-80/yr' },
 ]
@@ -375,7 +392,7 @@ function HomePage() {
               size="lg"
               href="https://github.com/uzitweaks/releases/releases/latest/download/UziTweaks.exe"
             >
-              Download UziTweaks {'->'}
+              Download UziTweaks
             </GlowButton>
             <GlowButton
               variant="pink"
@@ -385,7 +402,7 @@ function HomePage() {
               See Features
             </GlowButton>
           </div>
-          <p className="hero-download-note">Free download. No account needed. 65MB, runs instantly. Upgrade to Premium for all 1500+ tweaks.</p>
+          <p className="hero-download-note">Free download. No account needed. 77MB, runs instantly. Upgrade to Premium for all 1500+ tweaks.</p>
           <div className="hero-stats">
             <div className="hero-stat">
               <span className="hero-stat-num">1500+</span>
@@ -393,12 +410,12 @@ function HomePage() {
             </div>
             <div className="hero-stat-divider" />
             <div className="hero-stat">
-              <span className="hero-stat-num">9</span>
-              <span className="hero-stat-label">Optimizer Steps</span>
+              <span className="hero-stat-num">20</span>
+              <span className="hero-stat-label">Feature Pages</span>
             </div>
             <div className="hero-stat-divider" />
             <div className="hero-stat">
-              <span className="hero-stat-num">6+</span>
+              <span className="hero-stat-num">15+</span>
               <span className="hero-stat-label">Game Configs</span>
             </div>
           </div>
@@ -443,6 +460,7 @@ function HomePage() {
               <span className="featured-logo-text">FACEIT</span>
               <span className="featured-logo-text">Vanguard</span>
               <span className="featured-logo-text">EasyAntiCheat</span>
+              <span className="featured-logo-text">BattlEye</span>
               <span className="featured-logo-text">Steam</span>
               <span className="featured-logo-text">Epic Games</span>
               <span className="featured-logo-text">Battle.net</span>
@@ -548,11 +566,11 @@ function HomePage() {
       <section className="features" id="features" ref={featuresRef.ref}>
         <div className={`container fade-in-section ${featuresRef.inView ? 'visible' : ''}`}>
           <h2 className="section-title">
-            <span className="gradient-text">12-Step</span> Optimization Pipeline
+            <span className="gradient-text">Full</span> Optimization Pipeline
           </h2>
           <p className="section-subtitle">
             A complete workflow that takes your system from stock to fully optimized.
-            Every step is automated, reversible, and battle-tested.
+            Every step is automated, reversible, and thoroughly tested.
           </p>
           <div className="features-grid">
             {features.map((f, i) => (
@@ -576,7 +594,7 @@ function HomePage() {
             <span className="gradient-text-fire">Packed With</span> Power Tools
           </h2>
           <p className="section-subtitle">
-            Beyond the 12-step pipeline, UziTweaks includes real-time performance tools and diagnostics.
+            Beyond the optimization pipeline, UziTweaks includes real-time performance tools and diagnostics.
           </p>
           <div className="extras-grid">
             <div className="extra-item">
@@ -623,6 +641,21 @@ function HomePage() {
               <div className="extra-icon-wrap cyan">{'FIX'}</div>
               <h4>Windows Repair</h4>
               <p>SFC scan, DISM image repair, Windows Update reset, DLL re-registration, Store repair, and network stack reset. Fix system corruption fast.</p>
+            </div>
+            <div className="extra-item">
+              <div className="extra-icon-wrap green">{'VR/'}</div>
+              <h4>VR + Anti-Cheat Protection</h4>
+              <p>Meta Quest Link, SteamVR, Oculus services are protected from all tweaks. RiotVanguard, EasyAntiCheat, and BattlEye are never touched. Game safely.</p>
+            </div>
+            <div className="extra-item">
+              <div className="extra-icon-wrap purple">{'WIN'}</div>
+              <h4>Activate Windows</h4>
+              <p>One-click permanent Windows activation via Microsoft Activation Scripts (MAS) HWID method. Open-source, safe, no user interaction required.</p>
+            </div>
+            <div className="extra-item">
+              <div className="extra-icon-wrap orange">{'SPK'}</div>
+              <h4>Sparkline Dashboard</h4>
+              <p>Real-time mini-graphs for CPU, GPU, RAM, VRAM, Disk I/O, and Network throughput. 60-point rolling history with baseline comparison and export.</p>
             </div>
           </div>
         </div>
@@ -856,7 +889,7 @@ function HomePage() {
               <div className="step-number">2</div>
               <div className="step-icon-wrap">{'>>>'}</div>
               <h3>Run</h3>
-              <p>Launch UziTweaks and run the full optimization pipeline. 256 tweaks across CPU, GPU, network, memory, and power settings applied in minutes.</p>
+              <p>Launch UziTweaks and run the full optimization pipeline. 277 tweaks across CPU, GPU, network, memory, and power settings applied in minutes.</p>
             </div>
             <div className="step-connector">
               <div className="connector-line" />
@@ -865,8 +898,8 @@ function HomePage() {
             <div className="step-card">
               <div className="step-number">3</div>
               <div className="step-icon-wrap">{'!!!'}</div>
-              <h3>Dominate</h3>
-              <p>Run the full 12-step pipeline. Your system is now fully optimized. Go win.</p>
+              <h3>Play</h3>
+              <p>Restart your PC. Your system is now fully optimized with 20 pages of tools at your fingertips.</p>
             </div>
           </div>
         </div>
@@ -894,8 +927,8 @@ function HomePage() {
                 <li><span className="check">{'//'}</span> Disk cleaner + temp file removal</li>
                 <li><span className="check">{'//'}</span> System benchmark + scoring</li>
                 <li><span className="check">{'//'}</span> Startup manager</li>
-                <li><span className="check">{'//'}</span> Hardware monitor</li>
-                <li><span className="check">{'//'}</span> BIOS guide (auto-detected)</li>
+                <li><span className="check">{'//'}</span> Sparkline hardware monitor</li>
+                <li><span className="check">{'//'}</span> BIOS guide + XMP/EXPO detection</li>
                 <li><span className="check">{'//'}</span> System restore point creation</li>
                 <li className="pricing-feature-disabled">{'--'} 1500+ advanced tweaks</li>
                 <li className="pricing-feature-disabled">{'--'} Game booster + auto-optimizer</li>
@@ -907,7 +940,7 @@ function HomePage() {
                 href="https://github.com/uzitweaks/releases/releases/latest/download/UziTweaks.exe"
                 className="pricing-cta"
               >
-                Download Free {'->'}
+                Download Free
               </GlowButton>
               <p className="pricing-secure">Windows 10/11 {' | '} 65MB {' | '} No installer</p>
             </NeonCard>
@@ -927,9 +960,10 @@ function HomePage() {
                 <li><span className="check">{'//'}</span> NVIDIA GPU deep registry tweaks</li>
                 <li><span className="check">{'//'}</span> Per-game auto-optimization engine</li>
                 <li><span className="check">{'//'}</span> Network stack tuning + interrupt affinity</li>
-                <li><span className="check">{'//'}</span> Aggressive service killer</li>
+                <li><span className="check">{'//'}</span> Aggressive service killer (VR/AC protected)</li>
                 <li><span className="check">{'//'}</span> Game booster mode + Windows repair</li>
                 <li><span className="check">{'//'}</span> 5-layer virus scanner + FACEIT AC</li>
+                <li><span className="check">{'//'}</span> DeepFreeze cafe mode + Activate Windows</li>
               </ul>
               <div className="checkout-form">
                 <input
@@ -947,7 +981,7 @@ function HomePage() {
                   onClick={handleCheckout}
                   className="pricing-cta"
                 >
-                  {checkoutLoading ? 'Redirecting...' : <>Get Premium {'->'}</>}
+                  {checkoutLoading ? 'Redirecting...' : 'Get Premium'}
                 </GlowButton>
               </div>
               <p className="pricing-secure">Crypto payment via NOWPayments {' | '} HWID-locked {' | '} 1 PC {' | '} No subscriptions</p>
@@ -990,7 +1024,7 @@ function HomePage() {
         <div className={`container fade-in-section ${ctaRef.inView ? 'visible' : ''}`}>
           <div className="final-cta-inner">
             <h2 className="section-title">
-              Ready to <span className="gradient-text">Dominate</span>?
+              Ready to <span className="gradient-text">Optimize</span>?
             </h2>
             <p className="final-cta-text">
               Stop losing frames to bloated Windows defaults.
@@ -1001,7 +1035,7 @@ function HomePage() {
               size="lg"
               href="https://github.com/uzitweaks/releases/releases/latest/download/UziTweaks.exe"
             >
-              Download UziTweaks {'->'}
+              Download UziTweaks
             </GlowButton>
           </div>
         </div>
