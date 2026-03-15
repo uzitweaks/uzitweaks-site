@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://uzitweaks.github.io/uzitweaks-site/sitemap.xml
